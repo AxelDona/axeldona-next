@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import "./ProjectList.scss";
 
 async function getProjects(){
 
@@ -23,19 +25,23 @@ export default async function ProjectList() {
     return (
         <div className="grid cards">
             {projects.map((project) => (
-
-                <div key={project.id}>
-                    <Link href={`/projects/${project.attributes.slug}`}>
-                        <div className="card" id={project.attributes.slug}>
-                            <div className="card__categories">
-                            </div>
-                            <div className="card__content">
-                                <h2 className="card__title">{project.attributes.name}</h2>
-                                <p className="card__subheading">{project.attributes.medium}</p>
-                            </div>
+                <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
+                    <div className="projectCard" id={project.attributes.slug}>
+                        <div className="projectCard__categories">
                         </div>
-                    </Link>
-                </div>
+                        <div className="projectCard__content">
+                            <h2 className="projectCard__title">{project.attributes.name}</h2>
+                            <p className="projectCard__subheading">{project.attributes.medium}</p>
+                        </div>
+                        <Image
+                            src={`/../../assets/img/project-cards/${project.attributes.slug}_card.jpg`}
+                            width={500}
+                            height={500}
+                            alt="image"
+                            className="projectCard__image"
+                        />
+                    </div>
+                </Link>
             ))}
             {projects.length === 0 && (
                 <p className="text-center">No projects.</p>

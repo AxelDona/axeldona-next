@@ -20,6 +20,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
+    "sass": "^1.69.7",
     "tailwindcss": "^3"
   }
 }

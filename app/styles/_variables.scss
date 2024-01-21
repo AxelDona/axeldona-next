@@ -1,0 +1,49 @@
+$mainAccentColor: #EC0936;
+$mainBackgroundColor: #FFFFFF;
+$backgroundSecondaryColor: #DDDDDD;
+
+$textColor: #505050;
+$titleColor: #111111;
+
+$white: #ffffff;
+$black: #000000;
+$dark: #1E3050;
+
+//$mainBodyFont: 'Raleway', sans-serif;
+$mainBodyFont:  'Noto Sans', sans-serif;
+$mainTitleFont: 'Montserrat', sans-serif;
+
+$cardSize: 280px;
+
+@mixin titles{
+  font-family: $mainTitleFont;
+  text-transform: uppercase;
+  color: $black;
+}
+
+@mixin container($flex: flex-start){
+  width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@mixin textWrapper{
+  width: 50%;
+  box-sizing: border-box;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+@mixin menuIconLine{
+  display: block;
+  background-color: $dark;
+  width: 2em;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  border-radius: 25px;
+  transition: all 0.4s;
+}
