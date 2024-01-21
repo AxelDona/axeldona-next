@@ -7,14 +7,13 @@ export default function Projects() {
         <main>
             <nav>
                 <div>
-                    <h2>Tickets</h2>
-                    <p><small>Currently open tickets.</small></p>
+                    <h2>Nav</h2>
                 </div>
             </nav>
 
             <div className="container">
                 <div className="titleWrapper">
-                    <h2>Portfolio</h2>
+                    <h1>Portfolio</h1>
                     <div className="titleSeparator"></div>
                 </div>
 

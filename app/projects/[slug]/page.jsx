@@ -1,4 +1,7 @@
 import Link from "next/link";
+import {Suspense} from "react";
+import Loading from "@/app/Loading";
+import "./project.scss";
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -22,7 +25,7 @@ async function getProject(slug) {
             const techIcon = await getTechIcon(tech.attributes.slug);
 
             // Check if techIcon is not null before accessing its properties
-            return { ...tech, icon: techIcon.attributes.icon.data ? techIcon.attributes.icon.data.attributes.url : "" };
+            return { ...tech, icon: techIcon.attributes.icon.data ? techIcon.attributes.icon.data.attributes.formats.thumbnail.url : "" };
         });
 
         // Wait for all tech icons to be fetched
@@ -62,26 +65,26 @@ export default async function Project({ params }) {
     return (
         <div>
             <Link href="/projects">Retour</Link>
-            <div key={project.id}>
-                <p>#{project.id}</p>
-                <h3>Nom du projet : {project.attributes.name}</h3>
-                <p>Medium : {project.attributes.medium}</p>
-                <p>Catégories</p>
-                {project.attributes.categories.data.map((category) => (
-                    <span key={category.id}>{category.attributes.name}</span>
-                ))}
-                <p>Techs</p>
-                {project.techs.map((tech) => (
-                    <>
-                        <span key={tech.id}>
-                            {tech.attributes.name}
-                        </span>
-                        <img src={`http://localhost:1337${tech.icon}`} alt={`Logo ${tech.attributes.name}`}/>
-                    </>
-                ))}
-                <p>{project.attributes.description}</p>
-            </div>
-
+            <Suspense fallback={<Loading/>}>
+                <div className="container" key={project.id}>
+                    <div className="titleWrapper">
+                        <h1>{project.attributes.name}</h1>
+                        <h4>{project.attributes.medium}</h4>
+                        <div className="titleSeparator"></div>
+                    </div>
+                    <p>Catégories</p>
+                    {project.attributes.categories.data.map((category) => (
+                        <span key={category.id}>{category.attributes.name}</span>
+                    ))}
+                    <p>Technologies</p>
+                    <div className="techsWrapper">
+                        {project.techs.map((tech) => (
+                            <img key={tech.id} src={`http://localhost:1337${tech.icon}`} alt={`Logo ${tech.attributes.name}`} title={tech.attributes.name}/>
+                        ))}
+                    </div>
+                    <p>{project.attributes.description}</p>
+                </div>
+            </Suspense>
         </div>
     )
 }

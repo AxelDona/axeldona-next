@@ -97,7 +97,6 @@ a,a:hover{
     z-index: 10;
   }
 
-
   &__subheading {
     font-family: $mainTitleFont;
     font-size: 13px;
@@ -122,22 +121,10 @@ a,a:hover{
     top: 0;
     left: 0;
     z-index: 0;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
   }
 
-}
-
-.projectCard:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 104%;
-  background-size: cover;
-  background-position: center 0;
-  transition: transform calc(700ms * 1.5) cubic-bezier(0.19, 1, 0.22, 1);
-  pointer-events: none;
-  z-index: 5;
 }
 
 .projectCard:after {
@@ -244,6 +231,10 @@ a,a:hover{
   .projectCard:focus-within .projectCard__content,
   .projectCard:focus-within .projectCard__content > *:not(.projectCard__title) {
     transition-duration: 0s;
+  }
+
+  .projectCard:hover .projectCard__image{
+    transform: scale(1.1);
   }
 
 }

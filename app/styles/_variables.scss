@@ -11,13 +11,12 @@ $dark: #1E3050;
 
 //$mainBodyFont: 'Raleway', sans-serif;
 $mainBodyFont:  'Noto Sans', sans-serif;
-$mainTitleFont: 'Montserrat', sans-serif;
+$mainTitleFont: 'Inter', sans-serif;
 
 $cardSize: 280px;
 
 @mixin titles{
   font-family: $mainTitleFont;
-  text-transform: uppercase;
   color: $black;
 }
 
