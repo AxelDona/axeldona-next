@@ -62,7 +62,7 @@ export default async function Projects({ searchParams }) {
                 <Suspense fallback={<Loading/>}>
                     <div className="portfolio__tags">
                         {categories.map((category) => (
-                            <PortfolioFilterButton key={category.id} name={category.attributes.name} slug={category.attributes.slug}/>
+                            <PortfolioFilterButton key={category.id} type="category" name={category.attributes.name} slug={category.attributes.slug}/>
                         ))}
                     </div>
                     <div className="grid cards">
