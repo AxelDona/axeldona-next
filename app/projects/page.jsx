@@ -75,12 +75,14 @@ export default async function Projects({ searchParams }) {
         {
             "id": 0,
             "content": categories,
-            "name": "Catégories"
+            "name": "Catégories",
+            "slug": "categories"
         },
         {
             "id": 1,
             "content": techs,
-            "name": "Technologies"
+            "name": "Technologies",
+            "slug": "techs"
         }
     ];
 
