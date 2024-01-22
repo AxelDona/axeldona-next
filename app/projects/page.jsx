@@ -3,28 +3,36 @@ import Loading from "@/app/Loading";
 import Link from "next/link";
 import Image from "next/image";
 import "./ProjectList.scss";
-import PortfolioFilterButton from "@/app/projects/components/PortfolioFilterButton";
+import PortfolioFilters from "@/app/projects/components/PortfolioFilters";
 
-async function getProjects(category){
-
+async function getProjects(params) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
-    let apiUrl = 'http://localhost:1337/api/projects?populate=*'
-    if (category) {
-        apiUrl += `&filters[categories][slug][$eq]=${category}`;
+    let apiUrl = 'http://localhost:1337/api/projects?populate=*';
+
+    if (params) {
+        const filterKeys = Object.keys(params);
+
+        filterKeys.forEach((key, typeIndex) => {
+            const values = params[key].split(',');
+
+            values.forEach((value, valueIndex) => {
+                apiUrl += `&filters[$and][${typeIndex}][$or][${valueIndex}][${key}][slug][$eq]=${value}`;
+            });
+        });
     }
 
     const res = await fetch(apiUrl, {
         method: 'GET',
         headers: {
-            Authorization: `bearer ${token}`
+            Authorization: `bearer ${token}`,
         },
-        next: {revalidate : 60}
-    })
+        next: { revalidate: 60 },
+    });
 
-    const data = await res.json()
+    const data = await res.json();
 
-    return data.data
+    return data.data;
 }
 
 async function getCategories() {
@@ -43,9 +51,38 @@ async function getCategories() {
     return data.data.map(category => ({...category, active: false}));
 }
 
+async function getTechs() {
+    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+
+    const res = await fetch('http://localhost:1337/api/techs', {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        next: { revalidate: 60 }
+    });
+
+    const data = await res.json();
+
+    return data.data.map(category => ({...category, active: false}));
+}
+
 export default async function Projects({ searchParams }) {
-    const projects = await getProjects(searchParams.category);
+    const projects = await getProjects(searchParams);
     const categories = await getCategories();
+    const techs = await getTechs();
+    const filters = [
+        {
+            "id": 0,
+            "content": categories,
+            "name": "Catégories"
+        },
+        {
+            "id": 1,
+            "content": techs,
+            "name": "Technologies"
+        }
+    ];
 
     return (
         <main>
@@ -60,11 +97,7 @@ export default async function Projects({ searchParams }) {
                     <div className="titleSeparator"></div>
                 </div>
                 <Suspense fallback={<Loading/>}>
-                    <div className="portfolio__tags">
-                        {categories.map((category) => (
-                            <PortfolioFilterButton key={category.id} type="category" name={category.attributes.name} slug={category.attributes.slug}/>
-                        ))}
-                    </div>
+                    <PortfolioFilters filters={filters} />
                     <div className="grid cards">
                         {projects.map((project) => (
                             <Link href={`/projects/${project.attributes.slug}`} key={project.id}>

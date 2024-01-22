@@ -1,0 +1,38 @@
+
+.portfolio__filters{
+
+  &__menu{
+    list-style: none;
+    display: flex;
+
+    &__label{
+      margin-left: 1rem;
+    }
+  }
+
+  &__tags{
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-grow: 0;
+
+    &__tag{
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: $dark;
+      border: 1px solid $dark;
+      background-color: $white;
+      border-radius: 5px;
+      max-width: fit-content;
+
+      &.selected{
+        border: 1px solid $mainAccentColor;
+        background-color: $mainAccentColor;
+        color: $white;
+      }
+    }
+  }
+}
