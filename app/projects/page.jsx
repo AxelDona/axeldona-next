@@ -97,7 +97,7 @@ export default async function Projects({ searchParams }) {
                     <div className="titleSeparator"></div>
                 </div>
                 <Suspense fallback={<Loading/>}>
-                    <PortfolioFilters filters={filters} />
+                    <PortfolioFilters filters={filters}/>
                     <div className="grid cards">
                         {projects.map((project) => (
                             <Link href={`/projects/${project.attributes.slug}`} key={project.id}>

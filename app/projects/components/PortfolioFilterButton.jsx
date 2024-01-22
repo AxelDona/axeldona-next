@@ -1,26 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import "./PortfolioFilters.scss";
 
-export default function PortfolioFilterButton({
-                                                  type,
-                                                  name,
-                                                  slug,
-                                                  areMultipleFiltersAllowed,
-                                                  resetSelection,
-                                              }) {
-    const [isSelected, setIsSelected] = useState(false);
+export default function PortfolioFilterButton({ type, name, slug, areMultipleFiltersAllowed }) {
+
     const params = useSearchParams();
-
-    useEffect(() => {
-        setIsSelected(false); // Reset selection when resetSelection changes
-    }, [resetSelection]);
-
-    const handleFilterClick = () => {
-        setIsSelected(!isSelected);
-    };
+    const active = params.get(type) || "";
 
     const toggleSingleQuery = (key, value) => {
         const query = Object.fromEntries(params);
@@ -29,7 +15,6 @@ export default function PortfolioFilterButton({
         } else {
             query[key] = value;
         }
-
         return query;
     }
 
@@ -63,9 +48,8 @@ export default function PortfolioFilterButton({
                     }
             }
             className={`portfolio__filters__tags__tag ${
-                isSelected ? "selected" : ""
+                active.includes(slug) ? "selected" : ""
             } ${slug}-tag`}
-            onClick={handleFilterClick}
         >
             {name}
         </Link>
