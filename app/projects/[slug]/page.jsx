@@ -25,7 +25,7 @@ async function getProject(slug) {
             const techIcon = await getTechIcon(tech.attributes.slug);
 
             // Check if techIcon is not null before accessing its properties
-            return { ...tech, icon: techIcon.attributes.icon.data ? techIcon.attributes.icon.data.attributes.formats.thumbnail.url : "" };
+            return { ...tech, icon: techIcon.attributes.icon.data ? techIcon.attributes.icon.data.attributes.url : "" };
         });
 
         // Wait for all tech icons to be fetched

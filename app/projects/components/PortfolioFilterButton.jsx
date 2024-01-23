@@ -48,7 +48,7 @@ export default function PortfolioFilterButton({ type, name, slug, areMultipleFil
                     }
             }
             scroll={false}
-            className={`portfolio__filters__tags__tag ${
+            className={`portfolio__filters__accordion__tags__tag ${
                 active.includes(slug) ? "selected" : ""
             } ${slug}-tag`}
         >
