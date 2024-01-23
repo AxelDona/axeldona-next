@@ -6,10 +6,10 @@ import './PortfolioFilters.scss';
 import {useSearchParams} from "next/navigation";
 
 export default function PortfolioFilters({ filters }) {
-    const [activeGroup, setActiveGroup] = useState(null);
+    const [openGroup, setOpenGroup] = useState(null);
 
     const handleLabelClick = (groupId) => {
-        setActiveGroup(groupId);
+        setOpenGroup((prevOpenGroup) => (prevOpenGroup === groupId ? null : groupId));
     };
 
     const params = useSearchParams();
@@ -21,18 +21,19 @@ export default function PortfolioFilters({ filters }) {
                 {filters.map((group) => (
                     <li
                         key={group.id}
-                        className={`portfolio__filters__menu__label ${activeGroup === group.id ? 'active' : ''}`}
+                        className={`portfolio__filters__menu__label ${openGroup === group.id ? "open" : ""} ${query[group.slug] ? "active" : ""} `}
                         onClick={() => handleLabelClick(group.id)}
                     >
-                        {group.name}
+                        {group.name+" "}
                     </li>
                 ))}
-                {Object.keys(query).length === 0 ? "" : <Link href="/projects">Effacer les filtres</Link> }
+                {Object.keys(query).length === 0 ? "" : <Link href="/projects" scroll={false} className="portfolio__filters__menu__label clear">Effacer les filtres</Link> }
             </menu>
+            <hr/>
             {filters.map((group) => (
                 <div
                     key={group.id}
-                    className={`portfolio__filters__tags ${group.slug}-tags ${activeGroup === group.id ? 'open' : ''}`}
+                    className={`portfolio__filters__tags ${group.slug}-tags ${openGroup === group.id ? 'open' : ''}`}
                 >
                     {group.content.map((type) => (
                         <PortfolioFilterButton

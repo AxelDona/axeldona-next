@@ -47,6 +47,7 @@ export default function PortfolioFilterButton({ type, name, slug, areMultipleFil
                         query: toggleSingleQuery(type, slug),
                     }
             }
+            scroll={false}
             className={`portfolio__filters__tags__tag ${
                 active.includes(slug) ? "selected" : ""
             } ${slug}-tag`}

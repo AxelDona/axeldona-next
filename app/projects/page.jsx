@@ -105,9 +105,6 @@ export default async function Projects({ searchParams }) {
                             <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
                                 <div className="projectCard" id={project.attributes.slug}>
                                     <div className="projectCard__categories">
-                                        {project.attributes.categories.data.map((category) => (
-                                            <span key={category.id}>{category.attributes.name}</span>
-                                        ))}
                                     </div>
                                     <div className="projectCard__content">
                                         <h2 className="projectCard__title">{project.attributes.name}</h2>
