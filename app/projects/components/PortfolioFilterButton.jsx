@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import "./PortfolioFilters.scss";
 
-export default function PortfolioFilterButton({ type, name, slug, areMultipleFiltersAllowed }) {
+export default function PortfolioFilterButton({ type, name, slug, icon, areMultipleFiltersAllowed }) {
 
     const params = useSearchParams();
     const active = params.get(type) || "";
@@ -52,6 +52,14 @@ export default function PortfolioFilterButton({ type, name, slug, areMultipleFil
                 active.includes(slug) ? "selected" : ""
             } ${slug}-tag`}
         >
+            {icon ?
+                <img key={type.id}
+                     src={`http://localhost:1337${icon}`}
+                     alt={`Logo ${name}`}
+                     title={name}
+                     className="portfolio__filters__accordion__tags__tag__logo"
+                />
+                : ""}
             {name}
         </Link>
     );

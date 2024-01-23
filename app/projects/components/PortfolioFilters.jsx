@@ -47,6 +47,7 @@ export default function PortfolioFilters({ filters }) {
                                 type={group.slug}
                                 name={type.attributes.name}
                                 slug={type.attributes.slug}
+                                icon={group.slug === "techs" ? type.attributes.icon.data ? type.attributes.icon.data.attributes.url : null : null}
                                 areMultipleFiltersAllowed={true}
                             />
                         ))}

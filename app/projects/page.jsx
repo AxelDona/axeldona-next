@@ -54,7 +54,7 @@ async function getCategories() {
 async function getTechs() {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
-    const res = await fetch('http://localhost:1337/api/techs', {
+    const res = await fetch('http://localhost:1337/api/techs?populate[0]=icon&sort=name', {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`
