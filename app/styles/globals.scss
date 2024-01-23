@@ -46,13 +46,19 @@ section{
 
 .container{
   @include container;
+
+  &--twoColumns{
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
 
 h1{
   @include titles;
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: 700;
-  text-align: center;
 }
 
 h2{
@@ -124,41 +130,44 @@ hr{
 
 .textWrapper{
   @include textWrapper;
-}
 
-.textWrapper--right{
-  padding-left: 100px;
+  &--right{
+    @include textWrapper;
+    padding-left: 100px;
 
-  p{
-    margin-bottom: 15px;
-  }
-}
-
-.textWrapper--left{
-  padding-right: 100px;
-
-  p{
-    margin-bottom: 15px;
-  }
-}
-
-.textWrapper--center{
-
-  h2{
-    padding: 0 50px;
-    text-align: center;
+    p{
+      margin-bottom: 15px;
+    }
   }
 
-  .titleSeparator{
-    margin-left: auto;
-    margin-right: auto;
+  &--left {
+    @include textWrapper;
+    padding-right: 100px;
+
+    p {
+      margin-bottom: 15px;
+    }
   }
 
-  p{
-    margin-bottom: 15px;
-    padding-right: 50px;
-    padding-left: 50px;
-    text-align: justify;
+  &--center{
+    @include textWrapper;
+
+    h2{
+      padding: 0 50px;
+      text-align: center;
+    }
+
+    .titleSeparator{
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p{
+      margin-bottom: 15px;
+      padding-right: 50px;
+      padding-left: 50px;
+      text-align: justify;
+    }
   }
 }
 

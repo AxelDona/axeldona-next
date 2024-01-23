@@ -1,10 +1,50 @@
-.techsWrapper{
-  display: flex;
-  justify-content: left;
-  gap: 10px;
-  margin-bottom: 3em;
+.projectPage{
 
-  img{
-    height: 50px;
+  &__info{
+    width: 50%;
+
+    &__title{
+      width: 100%;
+      line-height: 1;
+    }
+
+    &__medium{
+      display: block;
+      text-transform: uppercase;
+    }
+
+    &__techsWrapper{
+      display: flex;
+      justify-content: left;
+      gap: 10px;
+
+      img{
+      }
+    }
+
+    &__section{
+      margin-top: 1.8rem;
+
+      &__title{
+        font-size: 1rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      &__categories{
+        font-weight: 500;
+        font-size: 0.8rem;
+
+        a{
+          color: $textColor;
+
+          &:hover{
+            color: $mainAccentColor;
+          }
+        }
+
+      }
+    }
   }
 }

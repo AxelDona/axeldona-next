@@ -22,6 +22,8 @@
         width: 0.5rem;
         display: inline-block;
         color: $mainAccentColor;
+        transition-duration: 300ms;
+        transition-timing-function: ease;
       }
 
       &.clear{
@@ -41,12 +43,7 @@
     &__tags{
       padding: 0;
       margin: 0;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      flex-grow: 0;
-      flex-shrink: 0;
-      display: flex;
+      gap: 0;
       height: 0;
       overflow: hidden;
       box-sizing: border-box;
@@ -55,7 +52,7 @@
       pointer-events: none;
 
       &.open{
-        height: 80px;
+        height: 100px;
         padding: 0.5rem 0;
         margin-bottom: 0.5rem;
         pointer-events: auto;
@@ -73,8 +70,10 @@
         border-radius: 5px;
         max-width: fit-content;
         user-select: none;
-        display: flex;
+        display: inline-flex;
         align-items: center;
+        flex-grow: 0;
+        flex-shrink: 0;
 
         &__logo{
           height: 1rem;

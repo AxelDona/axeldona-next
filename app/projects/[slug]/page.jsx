@@ -2,6 +2,7 @@ import Link from "next/link";
 import {Suspense} from "react";
 import Loading from "@/app/Loading";
 import "./project.scss";
+import Image from 'next/image'
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -58,7 +59,6 @@ export default async function Project({ params }) {
     const project = await getProject(params.slug);
 
     if (!project) {
-        // Handle case when project is not found
         return <div>Project not found</div>;
     }
 
@@ -66,23 +66,41 @@ export default async function Project({ params }) {
         <div>
             <Link href="/projects">Retour</Link>
             <Suspense fallback={<Loading/>}>
-                <div className="container" key={project.id}>
-                    <div className="titleWrapper">
-                        <h1>{project.attributes.name}</h1>
-                        <h4>{project.attributes.medium}</h4>
-                        <div className="titleSeparator"></div>
+                <div className="container projetPage" key={project.id}>
+                    <div className="projectPage__info">
+                        <h1 className="projectPage__info__title">{project.attributes.name}</h1>
+                        <span className="projectPage__info__medium">{project.attributes.medium}</span>
+                        <section className="projectPage__info__section">
+                            <div className="projectPage__info__techsWrapper">
+                                {project.techs.map((tech) => (
+                                    <Image
+                                        key={tech.id}
+                                        width={30}
+                                        height={30}
+                                        src={`http://localhost:1337${tech.icon}`}
+                                        alt={`Logo ${tech.attributes.name}`}
+                                        title={tech.attributes.name}
+                                    />
+                                ))}
+                            </div>
+                        </section>
+                        <section className="projectPage__info__section">
+                            <p>{project.attributes.description}</p>
+                        </section>
                     </div>
-                    <p>Catégories</p>
-                    {project.attributes.categories.data.map((category) => (
-                        <span key={category.id}>{category.attributes.name}</span>
-                    ))}
-                    <p>Technologies</p>
-                    <div className="techsWrapper">
-                        {project.techs.map((tech) => (
-                            <img key={tech.id} src={`http://localhost:1337${tech.icon}`} alt={`Logo ${tech.attributes.name}`} title={tech.attributes.name}/>
+                    <div className="projectPage__image"></div>
+                    <section className="projectPage__info__section">
+                        <h2 className="projectPage__info__section__title">Catégories</h2>
+                        {project.attributes.categories.data.map((category, index) => (
+                            <span key={category.id} className="projectPage__info__section__categories">
+                                    <Link href={`/projects?categories=${category.attributes.slug}`}>
+                                        {category.attributes.name}
+                                    </Link>
+                                {index < project.attributes.categories.data.length - 1 && ", "}
+                                </span>
                         ))}
-                    </div>
-                    <p>{project.attributes.description}</p>
+                    </section>
+
                 </div>
             </Suspense>
         </div>
