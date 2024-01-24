@@ -1,7 +1,13 @@
 .projectPage{
+  min-height: calc(100vh - $headerHeight);
+
+  hr{
+    margin: 0.5rem 0 1rem 0;
+  }
 
   &__info{
     width: 50%;
+    padding-right: 2rem;
 
     &__title{
       width: 100%;
@@ -11,6 +17,7 @@
     &__medium{
       display: block;
       text-transform: uppercase;
+      margin-bottom: 0.8rem;
     }
 
     &__techsWrapper{
@@ -36,22 +43,27 @@
           font-size: 0.75rem;
           font-weight: 300;
           white-space: nowrap;
-          opacity: 0;
+          visibility: hidden;
           user-select: none;
           user-focus: none;
-          transition-duration: 150ms;
+          transition-duration: 200ms;
+          transform: translateY(50%);
+          opacity: 0;
           transition-timing-function: ease;
         }
 
         &:hover .projectPage__info__techsWrapper__techWrapper__techTooltip{
           opacity: 0.9;
+          visibility: visible;
+          transform: translateY(0);
         }
       }
 
     }
 
     &__section{
-      margin-top: 1.8rem;
+      margin-top: 1rem;
+      padding-bottom: 0.8rem;
 
       &__title{
         font-size: 1rem;
@@ -72,6 +84,24 @@
           }
         }
 
+      }
+    }
+  }
+
+  &__media{
+    width: 50%;
+    padding-left: 2rem;
+
+    &__link{
+      display: block;
+      overflow: hidden;
+
+      &__media{
+        transition-duration: 600ms;
+      }
+
+      &:hover .projectPage__media__link__media{
+        scale: 1.2;
       }
     }
   }

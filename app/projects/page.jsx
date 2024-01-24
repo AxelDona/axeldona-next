@@ -107,8 +107,8 @@ export default async function Projects({ searchParams }) {
                                     <div className="projectCard__categories">
                                     </div>
                                     <div className="projectCard__content">
-                                        <h2 className="projectCard__title">{project.attributes.name}</h2>
-                                        <p className="projectCard__subheading">{project.attributes.medium}</p>
+                                        <h2 className="projectCard__content__title">{project.attributes.name}</h2>
+                                        <p className="projectCard__content__subheading">{project.attributes.medium}</p>
                                     </div>
                                     <Image
                                         src={`/../../assets/img/project-cards/${project.attributes.slug}_card.jpg`}

@@ -67,7 +67,7 @@ export default async function Project({ params }) {
         <div>
             <Link href="/projects">Retour</Link>
             <Suspense fallback={<Loading/>}>
-                <div className="container projetPage" key={project.id}>
+                <div className="container--twoColumns projectPage" key={project.id}>
                     <div className="projectPage__info">
                         <h1 className="projectPage__info__title">{project.attributes.name}</h1>
                         <span className="projectPage__info__medium">{project.attributes.medium}</span>
@@ -76,8 +76,8 @@ export default async function Project({ params }) {
                                 {project.techs.map((tech) => (
                                     <div key={tech.id} className="projectPage__info__techsWrapper__techWrapper">
                                         <Image
-                                            width={30}
-                                            height={30}
+                                            width={28}
+                                            height={28}
                                             className="projectPage__info__techsWrapper__techWrapper__techImage"
                                             src={`http://localhost:1337${tech.icon}`}
                                             alt={`Logo ${tech.attributes.name}`}
@@ -92,20 +92,31 @@ export default async function Project({ params }) {
                                 source={project.attributes.description}
                             />
                         </section>
-                    </div>
-                    <div className="projectPage__image"></div>
-                    <section className="projectPage__info__section">
-                        <h2 className="projectPage__info__section__title">Catégories</h2>
-                        {project.attributes.categories.data.map((category, index) => (
-                            <span key={category.id} className="projectPage__info__section__categories">
+                        <hr/>
+                        <section className="projectPage__info__section">
+                            <h2 className="projectPage__info__section__title">Catégories</h2>
+                            {project.attributes.categories.data.map((category, index) => (
+                                <span key={category.id} className="projectPage__info__section__categories">
                                     <Link href={`/projects?categories=${category.attributes.slug}`}>
                                         {category.attributes.name}
                                     </Link>
-                                {index < project.attributes.categories.data.length - 1 && ", "}
+                                    {index < project.attributes.categories.data.length - 1 && ", "}
                                 </span>
-                        ))}
-                    </section>
-
+                            ))}
+                        </section>
+                    </div>
+                    <div className="projectPage__media">
+                        {project.attributes.images.data ?
+                            <a target="_blank" href={`http://localhost:1337${project.attributes.images.data[0].attributes.url}`} className="projectPage__media__link">
+                                <Image
+                                    width={900}
+                                    height={900}
+                                    src={`http://localhost:1337${project.attributes.images.data[0].attributes.url}`}
+                                    className="projectPage__media__link__media"
+                                />
+                            </a>
+                        : "" }
+                    </div>
                 </div>
             </Suspense>
         </div>
