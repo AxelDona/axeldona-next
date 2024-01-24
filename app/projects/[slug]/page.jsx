@@ -3,6 +3,7 @@ import {Suspense} from "react";
 import Loading from "@/app/Loading";
 import "./project.scss";
 import Image from 'next/image'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -85,7 +86,9 @@ export default async function Project({ params }) {
                             </div>
                         </section>
                         <section className="projectPage__info__section">
-                            <p>{project.attributes.description}</p>
+                            <MDXRemote
+                                source={project.attributes.description}
+                            />
                         </section>
                     </div>
                     <div className="projectPage__image"></div>

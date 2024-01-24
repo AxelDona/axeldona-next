@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "next": "^14.0.1",
+    "next-mdx-remote": "^4.4.1",
     "node": "^21.1.0",
     "query-string": "^8.1.0",
     "react": "^18",
