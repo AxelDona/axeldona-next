@@ -74,14 +74,16 @@ export default async function Project({ params }) {
                         <section className="projectPage__info__section">
                             <div className="projectPage__info__techsWrapper">
                                 {project.techs.map((tech) => (
-                                    <Image
-                                        key={tech.id}
-                                        width={30}
-                                        height={30}
-                                        src={`http://localhost:1337${tech.icon}`}
-                                        alt={`Logo ${tech.attributes.name}`}
-                                        title={tech.attributes.name}
-                                    />
+                                    <div key={tech.id} className="projectPage__info__techsWrapper__techWrapper">
+                                        <Image
+                                            width={30}
+                                            height={30}
+                                            className="projectPage__info__techsWrapper__techWrapper__techImage"
+                                            src={`http://localhost:1337${tech.icon}`}
+                                            alt={`Logo ${tech.attributes.name}`}
+                                        />
+                                        <span className="projectPage__info__techsWrapper__techWrapper__techTooltip">{tech.attributes.name}</span>
+                                    </div>
                                 ))}
                             </div>
                         </section>
