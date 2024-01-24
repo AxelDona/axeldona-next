@@ -35,6 +35,7 @@ main{
   position: relative;
   min-height: 100vh;
   width: 100%;
+  padding-top: calc($headerHeight / 2);
 }
 
 section{

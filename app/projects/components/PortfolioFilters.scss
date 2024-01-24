@@ -29,6 +29,10 @@
       &.clear{
         color: #c50a0a;
         font-weight: 300;
+
+        &:hover{
+          text-decoration: none;
+        }
       }
 
       &.active:after{
@@ -74,6 +78,10 @@
         align-items: center;
         flex-grow: 0;
         flex-shrink: 0;
+
+        &:hover{
+          text-decoration: none;
+        }
 
         &__logo{
           height: 1rem;

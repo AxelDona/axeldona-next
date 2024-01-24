@@ -88,34 +88,25 @@ export default async function Projects({ searchParams }) {
 
     return (
         <main>
-            <nav>
-                <div>
-                    <h2>Nav</h2>
-                </div>
-            </nav>
             <div className="container">
-                <div className="titleWrapper">
-                    <h1>Portfolio</h1>
-                    <div className="titleSeparator"></div>
-                </div>
                 <Suspense fallback={<Loading/>}>
                     <PortfolioFilters filters={filters}/>
-                    <div className="grid cards">
+                    <div className="portfolio__grid">
                         {projects.map((project) => (
                             <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
-                                <div className="projectCard" id={project.attributes.slug}>
-                                    <div className="projectCard__categories">
+                                <div className="portfolio__grid__card" id={project.attributes.slug}>
+                                    <div className="portfolio__grid__card__categories">
                                     </div>
-                                    <div className="projectCard__content">
-                                        <h2 className="projectCard__content__title">{project.attributes.name}</h2>
-                                        <p className="projectCard__content__subheading">{project.attributes.medium}</p>
+                                    <div className="portfolio__grid__card__content">
+                                        <h2 className="portfolio__grid__card__content__title">{project.attributes.name}</h2>
+                                        <p className="portfolio__grid__card__content__subheading">{project.attributes.medium}</p>
                                     </div>
                                     <Image
                                         src={`http://localhost:1337${project.attributes.card.data.attributes.url}`}
                                         width={350}
                                         height={350}
                                         alt="image"
-                                        className="projectCard__image"
+                                        className="portfolio__grid__card__image"
                                     />
                                 </div>
                             </Link>

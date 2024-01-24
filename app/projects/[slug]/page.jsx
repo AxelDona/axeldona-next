@@ -73,10 +73,10 @@ export default async function Project({ params }) {
     }
 
     return (
-        <div>
-            <Link href="/projects">Retour</Link>
+        <main>
             <Suspense fallback={<Loading/>}>
                 <div className="container--twoColumns projectPage" key={project.id}>
+                    <Link href="/projects" className="projectPage__backButton">Retour</Link>
                     <div className="projectPage__info">
                         <h1 className="projectPage__info__title">{project.attributes.name}</h1>
                         <span className="projectPage__info__medium">{project.attributes.medium}</span>
@@ -123,6 +123,6 @@ export default async function Project({ params }) {
                     </div>
                 </div>
             </Suspense>
-        </div>
+        </main>
     )
 }

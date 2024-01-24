@@ -11,3 +11,7 @@
     height: 100%;
   }
 }
+
+.projectPage__media__link__media{
+  max-height: calc(100vh - $headerHeight);
+}

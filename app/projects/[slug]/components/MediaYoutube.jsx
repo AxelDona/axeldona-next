@@ -1,5 +1,5 @@
 import "../projectPage.scss";
-import "./mediaYoutube.scss";
+import "./media.scss";
 
 export function MediaYoutube({data}) {
     const aspectRatio = data.videoHeight / data.videoWidth * 100;

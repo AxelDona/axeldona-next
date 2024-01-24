@@ -1,8 +1,15 @@
 .projectPage{
   min-height: calc(100vh - $headerHeight);
+  position: relative;
 
   hr{
     margin: 0.5rem 0 1rem 0;
+  }
+
+  &__backButton{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
   }
 
   &__info{

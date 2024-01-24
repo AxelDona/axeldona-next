@@ -1,5 +1,6 @@
 import Image from "next/image";
 import "../projectPage.scss";
+import "./media.scss";
 
 export function MediaSingleImage({data}) {
     return (
