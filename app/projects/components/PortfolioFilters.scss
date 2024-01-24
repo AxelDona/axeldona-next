@@ -43,22 +43,19 @@
 
   &__accordion{
     height: auto;
+    margin-bottom: 0.5rem;
 
     &__tags{
-      padding: 0;
-      margin: 0;
-      gap: 0;
-      height: 0;
+      max-height: 0;
       overflow: hidden;
       box-sizing: border-box;
-      transition-duration: 600ms;
+      transition: max-height 200ms ease, padding-top 200ms ease, opacity 600ms ease;
       opacity: 0;
       pointer-events: none;
 
       &.open{
-        height: 100px;
-        padding: 0.5rem 0;
-        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+        max-height: 400px;
         pointer-events: auto;
         opacity: 1;
       }
