@@ -1,9 +1,11 @@
 import Link from "next/link";
 import {Suspense} from "react";
 import Loading from "@/app/Loading";
-import "./project.scss";
+import "./projectPage.scss";
 import Image from 'next/image'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import {MDXRemote} from 'next-mdx-remote/rsc'
+import {MediaSingleImage,} from "@/app/projects/[slug]/components/MediaSinglelmage";
+import {MediaYoutube} from "@/app/projects/[slug]/components/MediaYoutube";
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -56,6 +58,13 @@ async function getTechIcon(slug) {
     return data.data[0];
 }
 
+function formatProjectDate(dateString) {
+    const dateObject = new Date(dateString);
+    const month = dateObject.toLocaleDateString('fr-FR', { month: 'long' });
+    return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${dateObject.getFullYear()}`;
+}
+
+
 export default async function Project({ params }) {
     const project = await getProject(params.slug);
 
@@ -71,6 +80,9 @@ export default async function Project({ params }) {
                     <div className="projectPage__info">
                         <h1 className="projectPage__info__title">{project.attributes.name}</h1>
                         <span className="projectPage__info__medium">{project.attributes.medium}</span>
+                        <div className="projectPage__info__date">
+                            {formatProjectDate(project.attributes.date)}
+                        </div>
                         <section className="projectPage__info__section">
                             <div className="projectPage__info__techsWrapper">
                                 {project.techs.map((tech) => (
@@ -106,16 +118,8 @@ export default async function Project({ params }) {
                         </section>
                     </div>
                     <div className="projectPage__media">
-                        {project.attributes.images.data ?
-                            <a target="_blank" href={`http://localhost:1337${project.attributes.images.data[0].attributes.url}`} className="projectPage__media__link">
-                                <Image
-                                    width={900}
-                                    height={900}
-                                    src={`http://localhost:1337${project.attributes.images.data[0].attributes.url}`}
-                                    className="projectPage__media__link__media"
-                                />
-                            </a>
-                        : "" }
+                        {project.attributes.layout === "singleImage" ? <MediaSingleImage data={project.attributes.images.data} />: ""}
+                        {project.attributes.layout === "youtube" ? <MediaYoutube data={project.attributes.youtube} />: ""}
                     </div>
                 </div>
             </Suspense>

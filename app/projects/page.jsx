@@ -8,7 +8,7 @@ import PortfolioFilters from "@/app/projects/components/PortfolioFilters";
 async function getProjects(params) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
-    let apiUrl = 'http://localhost:1337/api/projects?populate=*';
+    let apiUrl = 'http://localhost:1337/api/projects?populate=*&sort=date:desc';
 
     if (params) {
         const filterKeys = Object.keys(params);
@@ -111,9 +111,9 @@ export default async function Projects({ searchParams }) {
                                         <p className="projectCard__content__subheading">{project.attributes.medium}</p>
                                     </div>
                                     <Image
-                                        src={`/../../assets/img/project-cards/${project.attributes.slug}_card.jpg`}
-                                        width={500}
-                                        height={500}
+                                        src={`http://localhost:1337${project.attributes.card.data.attributes.url}`}
+                                        width={350}
+                                        height={350}
                                         alt="image"
                                         className="projectCard__image"
                                     />
