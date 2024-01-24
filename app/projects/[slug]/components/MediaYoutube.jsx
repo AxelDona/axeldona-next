@@ -1,16 +1,16 @@
 import "../projectPage.scss";
+import "./mediaYoutube.scss";
 
 export function MediaYoutube({data}) {
+    const aspectRatio = data.videoHeight / data.videoWidth * 100;
+
     return (
         <>
-            <div className="youtubeEmbedContainer">
+            <div className="youtubeEmbedContainer" style={{paddingBottom: aspectRatio + '%'}}>
                 {data ?
                     <iframe
-                        width={data.videoWidth}
-                        height={data.videoHeight}
                         src={`https://www.youtube.com/embed/${data.url}`}
                         title="YouTube video player"
-                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                         className="youtubeEmbed">
