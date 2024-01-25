@@ -1,8 +1,8 @@
 import {Suspense} from "react";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 import Link from "next/link";
 import Image from "next/image";
-import "./ProjectList.scss";
+import "./projects.scss";
 import PortfolioFilters from "@/app/projects/_components/PortfolioFilters";
 
 async function getProjects(params) {
@@ -88,7 +88,7 @@ export default async function Projects({ searchParams }) {
 
     return (
         <main>
-            <div className="container">
+            <div className="container portfolio">
                 <Suspense fallback={<Loading/>}>
                     <PortfolioFilters filters={filters}/>
                     <div className="portfolio__grid">
@@ -111,11 +111,10 @@ export default async function Projects({ searchParams }) {
                                 </div>
                             </Link>
                         ))}
-                        {projects.length === 0 && (
-                            <p className="text-center">No projects.</p>
-                        )}
-
                     </div>
+                    {projects.length === 0 && (
+                        <p className="text-center">Aucun projet à afficher.</p>
+                    )}
                 </Suspense>
             </div>
         </main>

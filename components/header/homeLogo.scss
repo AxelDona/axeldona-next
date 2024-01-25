@@ -1,0 +1,20 @@
+.homeLogo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  padding: 25px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 180px;
+
+  &__link{
+    width: 100px;
+
+    &__image{
+      height: $homeLogoHeight;
+    }
+  }
+}

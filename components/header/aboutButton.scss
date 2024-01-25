@@ -1,0 +1,21 @@
+.aboutButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: fixed;
+  padding: 25px;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 180px;
+
+  &__link{
+    line-height: $homeLogoHeight;
+    color: $black;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

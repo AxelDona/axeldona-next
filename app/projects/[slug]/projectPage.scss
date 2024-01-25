@@ -1,5 +1,12 @@
+html body main .container--twoColumns.projectPage{
+  max-width: 1170px;
+  width: calc(100% - 360px);
+  margin: 0 180px;
+}
+
 .projectPage{
-  min-height: calc(100vh - $headerHeight);
+  //min-height: calc(100vh - $headerHeight);
+  min-height: 100vh;
   position: relative;
 
   hr{
@@ -8,13 +15,16 @@
 
   &__backButton{
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0;
+    left: 0;
+    padding: 25px 15px;
+    line-height: $homeLogoHeight;
   }
 
   &__info{
     width: 50%;
     padding-right: 2rem;
+    margin: calc(50px + $homeLogoHeight) 0;
 
     &__title{
       width: 100%;
@@ -95,21 +105,21 @@
     }
   }
 
-  &__media{
+  &__mediaWrapper{
     width: 50%;
+    max-width: 50%;
+    height: 100vh;
+    position: relative;
+    align-self: flex-start;
+  }
+
+  &__media{
+    height: 100vh;
+    max-height: 100vh;
     padding-left: 2rem;
-
-    &__link{
-      display: block;
-      overflow: hidden;
-
-      &__media{
-
-      }
-
-      &:hover .projectPage__media__link__media{
-
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 }

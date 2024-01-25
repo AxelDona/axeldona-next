@@ -1,11 +1,12 @@
 import Link from "next/link";
 import {Suspense} from "react";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 import "./projectPage.scss";
 import Image from 'next/image'
 import {MDXRemote} from 'next-mdx-remote/rsc'
 import {MediaSingleImage,} from "@/app/projects/[slug]/_components/MediaSinglelmage";
 import {MediaYoutube} from "@/app/projects/[slug]/_components/MediaYoutube";
+import {ProjectButton} from "@/components/buttons/ProjectButton";
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -64,7 +65,6 @@ function formatProjectDate(dateString) {
     return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${dateObject.getFullYear()}`;
 }
 
-
 export default async function Project({ params }) {
     const project = await getProject(params.slug);
 
@@ -104,6 +104,7 @@ export default async function Project({ params }) {
                                 source={project.attributes.description}
                             />
                         </section>
+                        {project.attributes.button.length !== 0 &&  <ProjectButton url={project.attributes.button[0].url} text={project.attributes.button[0].text}/>}
                         <hr/>
                         <section className="projectPage__info__section">
                             <h2 className="projectPage__info__section__title">Catégories</h2>
@@ -117,9 +118,11 @@ export default async function Project({ params }) {
                             ))}
                         </section>
                     </div>
-                    <div className="projectPage__media">
-                        {project.attributes.layout === "singleImage" ? <MediaSingleImage data={project.attributes.images.data} />: ""}
-                        {project.attributes.layout === "youtube" ? <MediaYoutube data={project.attributes.youtube} />: ""}
+                    <div className="projectPage__mediaWrapper">
+                        <div className="projectPage__media">
+                            {project.attributes.layout === "singleImage" ? <MediaSingleImage data={project.attributes.images.data} />: ""}
+                            {project.attributes.layout === "youtube" ? <MediaYoutube data={project.attributes.youtube} />: ""}
+                        </div>
                     </div>
                 </div>
             </Suspense>

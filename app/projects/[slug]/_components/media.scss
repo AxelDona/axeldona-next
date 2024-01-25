@@ -12,6 +12,14 @@
   }
 }
 
-.projectPage__media__link__media{
-  max-height: calc(100vh - $headerHeight);
+.projectPage__media__link{
+  width: 100%;
+  overflow: hidden;
+
+  .projectPage__media__link__media{
+    max-height: calc(90vh - $headerHeight);
+    max-width: 100%;
+    height: auto;
+    width: auto;
+  }
 }
