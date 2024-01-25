@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     sassOptions: {
-        additionalData: `@import "app/styles/variables.scss";`,
+        additionalData: `@import "styles/_variables.scss";`,
     },
     reactStrictMode: true,
     images: {

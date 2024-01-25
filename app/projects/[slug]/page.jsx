@@ -1,11 +1,11 @@
 import Link from "next/link";
 import {Suspense} from "react";
-import Loading from "@/app/Loading";
+import Loading from "@/components/Loading";
 import "./projectPage.scss";
 import Image from 'next/image'
 import {MDXRemote} from 'next-mdx-remote/rsc'
-import {MediaSingleImage,} from "@/app/projects/[slug]/components/MediaSinglelmage";
-import {MediaYoutube} from "@/app/projects/[slug]/components/MediaYoutube";
+import {MediaSingleImage,} from "@/app/projects/[slug]/_components/MediaSinglelmage";
+import {MediaYoutube} from "@/app/projects/[slug]/_components/MediaYoutube";
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;

@@ -1,4 +1,4 @@
-import {fetchAPI} from "@/app/_api/fetch-api";
+import {fetchAPI} from "@/db/fetch-api";
 import Link from "next/link";
 
 

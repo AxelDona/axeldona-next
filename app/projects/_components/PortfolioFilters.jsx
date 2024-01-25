@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import Link from 'next/link';
-import PortfolioFilterButton from '@/app/projects/components/PortfolioFilterButton';
+import PortfolioFilterButton from '@/app/projects/_components/PortfolioFilterButton';
 import './PortfolioFilters.scss';
 import { useSearchParams } from "next/navigation";
 

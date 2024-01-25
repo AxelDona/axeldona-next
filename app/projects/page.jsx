@@ -1,9 +1,9 @@
 import {Suspense} from "react";
-import Loading from "@/app/Loading";
+import Loading from "@/components/Loading";
 import Link from "next/link";
 import Image from "next/image";
 import "./ProjectList.scss";
-import PortfolioFilters from "@/app/projects/components/PortfolioFilters";
+import PortfolioFilters from "@/app/projects/_components/PortfolioFilters";
 
 async function getProjects(params) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
