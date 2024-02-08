@@ -1,9 +1,9 @@
-.aboutButton {
+.aboutButton{
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   position: fixed;
-  padding: 25px;
+  padding: 25px 30px 25px 20px;
   top: 0;
   right: 0;
   z-index: 1000;
@@ -13,9 +13,16 @@
   &__link{
     line-height: $homeLogoHeight;
     color: $black;
+    font-weight: 800;
 
     &:hover{
       text-decoration: underline;
     }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .aboutButton{
+    display: none;
   }
 }

@@ -6,7 +6,10 @@ import Image from 'next/image'
 import {MDXRemote} from 'next-mdx-remote/rsc'
 import {MediaSingleImage,} from "@/app/projects/[slug]/_components/MediaSinglelmage";
 import {MediaYoutube} from "@/app/projects/[slug]/_components/MediaYoutube";
-import {ProjectButton} from "@/components/buttons/ProjectButton";
+import {MainProjectButton} from "@/components/buttons/MainProjectButton";
+import {SecondaryProjectButton} from "@/components/buttons/SecondaryProjectButton";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 
 async function getProject(slug) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -76,20 +79,26 @@ export default async function Project({ params }) {
         <main>
             <Suspense fallback={<Loading/>}>
                 <div className="container--twoColumns projectPage" key={project.id}>
-                    <Link href="/projects" className="projectPage__backButton">Retour</Link>
+                    <Link href="/projects" className="projectPage__backButton"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;Retour</Link>
                     <div className="projectPage__info">
                         <h1 className="projectPage__info__title">{project.attributes.name}</h1>
-                        <span className="projectPage__info__medium">{project.attributes.medium}</span>
+                        {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
+                        <span className="projectPage__info__medium">{project.attributes.medium} // {formatProjectDate(project.attributes.date)}</span>
+                        <section className="projectPage__info__section">
+                            <MDXRemote
+                                source={project.attributes.description}
+                            />
+                        </section>
                         <div className="projectPage__info__date">
-                            {formatProjectDate(project.attributes.date)}
+
                         </div>
                         <section className="projectPage__info__section">
                             <div className="projectPage__info__techsWrapper">
                                 {project.techs.map((tech) => (
                                     <div key={tech.id} className="projectPage__info__techsWrapper__techWrapper">
                                         <Image
-                                            width={28}
-                                            height={28}
+                                            width={50}
+                                            height={50}
                                             className="projectPage__info__techsWrapper__techWrapper__techImage"
                                             src={`http://localhost:1337${tech.icon}`}
                                             alt={`Logo ${tech.attributes.name}`}
@@ -99,15 +108,14 @@ export default async function Project({ params }) {
                                 ))}
                             </div>
                         </section>
-                        <section className="projectPage__info__section">
-                            <MDXRemote
-                                source={project.attributes.description}
-                            />
-                        </section>
-                        {project.attributes.button.length !== 0 &&  <ProjectButton url={project.attributes.button[0].url} text={project.attributes.button[0].text}/>}
+                        <div className="projectPage__info__buttonsWrapper">
+                            {project.attributes.secondaryButtons.length !== 0 ? project.attributes.secondaryButtons.map((button) => (
+                                <SecondaryProjectButton key={button.id} url={button.url} text={button.text} icon={button.icon} targetBlank={true}/>
+                            )) : ""}
+                            {project.attributes.mainButton &&  <MainProjectButton url={project.attributes.mainButton.url} text={project.attributes.mainButton.text} targetBlank={true}/>}
+                        </div>
                         <hr/>
                         <section className="projectPage__info__section">
-                            <h2 className="projectPage__info__section__title">Catégories</h2>
                             {project.attributes.categories.data.map((category, index) => (
                                 <span key={category.id} className="projectPage__info__section__categories">
                                     <Link href={`/projects?categories=${category.attributes.slug}`}>

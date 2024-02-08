@@ -1,7 +1,7 @@
 html body main .container--twoColumns.projectPage{
   max-width: 1170px;
   width: calc(100% - 360px);
-  margin: 0 180px;
+  margin: 0 auto;
 }
 
 .projectPage{
@@ -10,7 +10,7 @@ html body main .container--twoColumns.projectPage{
   position: relative;
 
   hr{
-    margin: 0.5rem 0 1rem 0;
+    margin: 0.5rem 0 0.5rem 0;
   }
 
   &__backButton{
@@ -25,16 +25,23 @@ html body main .container--twoColumns.projectPage{
     width: 50%;
     padding-right: 2rem;
     margin: calc(50px + $homeLogoHeight) 0;
+    display: flex;
+    flex-direction: column;
 
     &__title{
       width: 100%;
       line-height: 1;
+      margin-bottom: 0.2rem;
     }
 
     &__medium{
       display: block;
       text-transform: uppercase;
       margin-bottom: 0.8rem;
+    }
+
+    &__date{
+      font-weight: 600;
     }
 
     &__techsWrapper{
@@ -46,6 +53,8 @@ html body main .container--twoColumns.projectPage{
         position: relative;
 
         &__techImage{
+          max-height: 28px;
+          width: auto;
         }
 
         &__techTooltip{
@@ -78,6 +87,12 @@ html body main .container--twoColumns.projectPage{
 
     }
 
+    &__buttonsWrapper{
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
     &__section{
       margin-top: 1rem;
       padding-bottom: 0.8rem;
@@ -103,6 +118,10 @@ html body main .container--twoColumns.projectPage{
 
       }
     }
+
+    .projectButton{
+      align-self: flex-end;
+    }
   }
 
   &__mediaWrapper{
@@ -120,6 +139,65 @@ html body main .container--twoColumns.projectPage{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
   }
+}
+
+@media screen and (max-width: 1200px) {
+
+  html body main .container--twoColumns.projectPage{
+
+  }
+
+}
+
+@media screen and (max-width: 992px) {
+
+  html body main .container--twoColumns.projectPage{
+    width: 100%;
+    max-width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  html body main .container--twoColumns.projectPage{
+    padding: 0 40px;
+    flex-direction: column;
+  }
+
+  .projectPage{
+
+    &__info,
+    &__mediaWrapper{
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    &__info{
+      order: 2;
+      padding-right: 0;
+      margin-top: 3rem;
+    }
+
+    &__mediaWrapper{
+      order: 1;
+      max-height: 100vh;
+    }
+
+    &__media{
+      width: auto;
+      height: auto;
+      padding-left: 0;
+
+      &__link &__link__media{
+        max-height: 100vh !important;
+      }
+    }
+  }
+
 }

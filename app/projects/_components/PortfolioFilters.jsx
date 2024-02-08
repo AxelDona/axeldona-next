@@ -4,6 +4,8 @@ import Link from 'next/link';
 import PortfolioFilterButton from '@/app/projects/_components/PortfolioFilterButton';
 import './PortfolioFilters.scss';
 import { useSearchParams } from "next/navigation";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 export default function PortfolioFilters({ filters }) {
     const [openGroup, setOpenGroup] = useState(null);
@@ -23,6 +25,7 @@ export default function PortfolioFilters({ filters }) {
     return (
         <>
             <menu className="portfolio__filters__menu">
+                    <li><FontAwesomeIcon icon={faFilter}/>&nbsp;</li>
                 {filters.map((group) => (
                     <li
                         key={group.id}

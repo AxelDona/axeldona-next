@@ -1,6 +1,6 @@
 import {fetchAPI} from "@/db/fetch-api";
 import "./home.scss"
-import {ProjectButton} from "@/components/buttons/ProjectButton";
+import {MainProjectButton} from "@/components/buttons/MainProjectButton";
 
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main className="home">
-      <ProjectButton text="Projets" url="/projects"/>
+      <MainProjectButton text="Projets" url="/projects" targetBlank={false}/>
     </main>
   )
 }

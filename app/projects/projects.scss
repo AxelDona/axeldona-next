@@ -88,7 +88,7 @@ html body main .container.portfolio{
         font-weight: 600;
         line-height: 1.8;
         color: $white;
-        text-shadow: 0 0 12px rgba(0, 0, 0, 1);
+        text-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
         text-decoration: none;
       }
 
@@ -139,9 +139,16 @@ html body main .container.portfolio{
 
 @media screen and (max-width: 960px) {
 
-  .portfolio__grid{
+  html body main .container.portfolio{
     width: 100%;
+    max-width: 100%;
+
+    .portfolio__grid{
+      width: 100%;
+    }
   }
+
+
 
 }
 
@@ -220,23 +227,26 @@ html body main .container.portfolio{
 @media screen and (max-width: 768px) {
 
   .portfolio__grid__card{
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
   }
 
   .portfolio__grid__card__content__title {
-    font-size: 14px;
-    letter-spacing: 0.2rem;
-    line-height: 1;
+    font-size: 1rem;
   }
 
 }
 
 @media screen and (max-width: 480px){
 
+  .portfolio__grid{
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   .portfolio__grid__card{
-    width: 50vw;
-    height: 50vw;
+    width: 45vw;
+    height: 45vw;
     padding: 0;
   }
 
