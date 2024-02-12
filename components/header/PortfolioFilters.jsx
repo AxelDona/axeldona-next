@@ -1,13 +1,13 @@
 "use client"
 import { useState } from 'react';
 import Link from 'next/link';
-import PortfolioFilterButton from '@/app/projects/_components/PortfolioFilterButton';
+import PortfolioFilterButton from '@/components/header/PortfolioFilterButton';
 import './PortfolioFilters.scss';
 import { useSearchParams } from "next/navigation";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
-export default function PortfolioFilters({ filters }) {
+export default function PortfolioFilters({filters}) {
     const [openGroup, setOpenGroup] = useState(null);
 
     const handleLabelClick = (groupId) => {

@@ -78,9 +78,21 @@ export default async function Project({ params }) {
     return (
         <main>
             <Suspense fallback={<Loading/>}>
-                <div className="container--twoColumns projectPage" key={project.id}>
-                    <Link href="/projects" className="projectPage__backButton"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;Retour</Link>
+                <div className="projectNav projectNav--left">
+                    <div className="projectNav__image"></div>
+                </div>
+                <div className="projectNav projectNav--right">
+                    <div className="projectNav__image"></div>
+                </div>
+                <div className="projectPage" key={project.id}>
+                    <div className="projectPage__mediaWrapper">
+                        <div className="projectPage__media">
+                            {project.attributes.layout === "singleImage" ? <MediaSingleImage data={project.attributes.images.data} />: ""}
+                            {project.attributes.layout === "youtube" ? <MediaYoutube data={project.attributes.youtube} />: ""}
+                        </div>
+                    </div>
                     <div className="projectPage__info">
+                        <Link href="/projects" className="projectPage__backButton"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;Retour</Link>
                         <h1 className="projectPage__info__title">{project.attributes.name}</h1>
                         {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
                         <span className="projectPage__info__medium">{project.attributes.medium} // {formatProjectDate(project.attributes.date)}</span>
@@ -125,12 +137,6 @@ export default async function Project({ params }) {
                                 </span>
                             ))}
                         </section>
-                    </div>
-                    <div className="projectPage__mediaWrapper">
-                        <div className="projectPage__media">
-                            {project.attributes.layout === "singleImage" ? <MediaSingleImage data={project.attributes.images.data} />: ""}
-                            {project.attributes.layout === "youtube" ? <MediaYoutube data={project.attributes.youtube} />: ""}
-                        </div>
                     </div>
                 </div>
             </Suspense>

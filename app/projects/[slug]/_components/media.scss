@@ -12,14 +12,9 @@
   }
 }
 
-.projectPage__media__link{
-  overflow: hidden;
-  display: inline;
-
-  .projectPage__media__link__media{
-    max-height: calc(90vh - $headerHeight);
-    max-width: 100%;
-    height: auto;
-    width: auto;
-  }
+.projectPage__media__link__media{
+  max-height: 100vh;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }

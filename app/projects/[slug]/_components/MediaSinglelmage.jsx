@@ -6,15 +6,15 @@ export function MediaSingleImage({data}) {
     return (
         <>
             {data ?
-                <a target="_blank" href={`http://localhost:1337${data[0].attributes.url}`} className="projectPage__media__link">
+                // <a target="_blank" href={`http://localhost:1337${data[0].attributes.url}`} className="projectPage__media__link">
                     <Image
-                        width={900}
-                        height={900}
+                        width={1200}
+                        height={1200}
                         alt=""
                         src={`http://localhost:1337${data[0].attributes.url}`}
                         className="projectPage__media__link__media"
                     />
-                </a>
+                // </a>
                 : "" }
         </>
     )

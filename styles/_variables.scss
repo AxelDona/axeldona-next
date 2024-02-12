@@ -24,9 +24,7 @@ $cardSize: 265px;
 }
 
 @mixin container($flex: flex-start){
-  width: 1170px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;

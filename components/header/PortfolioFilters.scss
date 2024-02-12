@@ -19,6 +19,7 @@
       user-select: none;
       white-space: nowrap;
       font-weight: 300;
+      pointer-events: all;
 
       &:after{
         content: "•";

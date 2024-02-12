@@ -22,8 +22,10 @@ export default function Home() {
   fetchData();
 
   return (
-    <main className="home">
-      <MainProjectButton text="Projets" url="/projects" targetBlank={false}/>
-    </main>
+    <>
+      <main className="home">
+        <MainProjectButton text="Projets" url="/projects" targetBlank={false}/>
+      </main>
+    </>
   )
 }
