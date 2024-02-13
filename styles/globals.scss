@@ -22,17 +22,14 @@
 }
 
 html{
-  overflow-x: hidden;
 
   body{
     font-family: $mainBodyFont;
-    overflow-y: hidden;
     width: 100%;
 
     main{
       min-height: 100vh;
       width: 100%;
-      position: relative;
 
       .container{
         @include container;
@@ -210,47 +207,11 @@ hr{
 
 @media screen and (max-width: 1220px) {
 
-  .container{
-    width: 925px;
-  }
-
-  .textWrapper{
-    padding-bottom: 75px;
-    padding-top: 75px;
-  }
-
-  .textWrapper--right{
-    padding-left: 70px;
-  }
-
-  .textWrapper--left{
-    padding-right: 70px;
-  }
 }
 
 
 @media screen and (max-width: 960px) {
 
-
-  .container {
-    width: 100%;
-  }
-
-
-  .textWrapper {
-    padding-top: 50px;
-  }
-
-  .textWrapper--right,
-  .textWrapper--left{
-    padding: 50px;
-  }
-
-  .titleWrapper {
-    width: 90%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
 }
 
 @media screen and (max-width: 768px){
@@ -258,24 +219,5 @@ hr{
 }
 
 @media screen and (max-width: 480px){
-
-  .textWrapper {
-    width: 100%;
-
-    h2 {
-      padding: 0;
-      margin: 0 auto;
-    }
-  }
-
-  .textWrapper--right,
-  .textWrapper--left{
-    padding-right: 3%;
-    padding-left: 3%;
-  }
-
-  .titleWrapper {
-    width: 90%;
-  }
 
 }
