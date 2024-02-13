@@ -24,6 +24,7 @@ export default function PortfolioGrid({ projects }) {
     }
     const handleMouseMove = (e) => {
         if (!isMouseDown) return;
+        setHasMouseMoved(true);
         e.preventDefault();
         const x = e.pageX - itemsRef.current.offsetLeft;
         const walk = (x-startX)*2;
@@ -35,6 +36,10 @@ export default function PortfolioGrid({ projects }) {
         itemsRef.current.scrollLeft += 6*(e.deltaY);
     };
 
+    const preventDragHandler = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <Suspense fallback={<Loading />}>
             <div className="portfolio">
@@ -45,6 +50,7 @@ export default function PortfolioGrid({ projects }) {
                              onMouseUp={handleMouseUp}
                              onMouseMove={handleMouseMove}
                              onWheel={handleWheelScroll}
+                             onDragStart={preventDragHandler}
                         >
                             {projects.map((project) => (
                                 <Link href={`/projects/${project.attributes.slug}`} key={project.id}>

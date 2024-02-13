@@ -131,6 +131,7 @@
         z-index: 0;
         transition-duration: 300ms;
         transition-timing-function: ease;
+        pointer-events: none;
       }
     }
   }
