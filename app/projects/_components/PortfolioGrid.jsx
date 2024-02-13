@@ -3,23 +3,26 @@
 import Loading from "@/components/loading/Loading";
 import Link from "next/link";
 import Image from "next/image";
-import {Suspense, useRef} from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import {Suspense} from "react";
 
 export default function PortfolioGrid({ projects }) {
 
-    const targetRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-    });
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+    const handleScroll = (event) => {
+        const container = event.target;
+        const scrollAmount = event.deltaY;
+        container.scrollTo({
+            top: 0,
+            left: container.scrollLeft + scrollAmount,
+            behavior: 'smooth'
+        });
+    };
 
     return (
         <Suspense fallback={<Loading />}>
             <div className="portfolio">
-                <div ref={targetRef} className="portfolio__wrapper">
-                    <div className="portfolio__grid__wrapper">
-                        <motion.div className="portfolio__grid" style={{x}}>
+                <div className="portfolio__wrapper">
+                    <div className="portfolio__grid__wrapper" onWheel={handleScroll}>
+                        <div className="portfolio__grid">
                             {projects.map((project) => (
                                 <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
                                     <div className="portfolio__grid__card" id={project.attributes.slug}>
@@ -39,7 +42,7 @@ export default function PortfolioGrid({ projects }) {
                                     </div>
                                 </Link>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>
