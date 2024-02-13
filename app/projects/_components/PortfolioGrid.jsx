@@ -3,26 +3,44 @@
 import Loading from "@/components/loading/Loading";
 import Link from "next/link";
 import Image from "next/image";
-import {Suspense} from "react";
+import {Suspense, useRef, useState} from "react";
 
 export default function PortfolioGrid({ projects }) {
+    const itemsRef = useRef(null);
+    const [isMouseDown, setIsMouseDown] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
-    const handleScroll = (event) => {
-        const container = event.target;
-        const scrollAmount = event.deltaY;
-        container.scrollTo({
-            top: 0,
-            left: container.scrollLeft + scrollAmount,
-            behavior: 'smooth'
-        });
-    };
+    const handleMouseDown = (e) => {
+        setIsMouseDown(true);
+        setStartX(e.pageX - - itemsRef.current.offsetLeft);
+        setScrollLeft(itemsRef.current.scrollLeft);
+    }
+    const handleMouseLeave = () => {
+        setIsMouseDown(false)
+    }
+    const handleMouseUp = () => {
+        setIsMouseDown(false)
+    }
+    const handleMouseMove = (e) => {
+        if (!isMouseDown) return;
+        e.preventDefault();
+        const x = e.pageX - itemsRef.current.offsetLeft;
+        const walk = (x-startX)*2;
+        itemsRef.current.scrollLeft = scrollLeft - walk;
+    }
 
     return (
         <Suspense fallback={<Loading />}>
             <div className="portfolio">
                 <div className="portfolio__wrapper">
-                    <div className="portfolio__grid__wrapper" onWheel={handleScroll}>
-                        <div className="portfolio__grid">
+                    <div className="portfolio__grid__wrapper">
+                        <div className="portfolio__grid" ref={itemsRef}
+                             onMouseDown={handleMouseDown}
+                             onMouseLeave={handleMouseLeave}
+                             onMouseUp={handleMouseUp}
+                             onMouseMove={handleMouseMove}
+                        >
                             {projects.map((project) => (
                                 <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
                                     <div className="portfolio__grid__card" id={project.attributes.slug}>
