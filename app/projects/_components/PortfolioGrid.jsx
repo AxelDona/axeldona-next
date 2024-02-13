@@ -24,7 +24,6 @@ export default function PortfolioGrid({ projects }) {
     }
     const handleMouseMove = (e) => {
         if (!isMouseDown) return;
-        setHasMouseMoved(true);
         e.preventDefault();
         const x = e.pageX - itemsRef.current.offsetLeft;
         const walk = (x-startX)*2;
