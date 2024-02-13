@@ -3,50 +3,6 @@ html body main .container--twoColumns.projectPage{
   margin: 0 auto;
 }
 
-.projectNav{
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  max-height: 100vh;
-  width: 100px;
-  max-width: 100%;
-  overflow-y: hidden;
-  z-index: 10;
-
-  &--left{
-    left: 0;
-
-    & .projectNav__image{
-      left: 0;
-    }
-  }
-
-  &--right{
-    right: 0;
-
-    & .projectNav__image{
-      right: 0;
-    }
-  }
-
-  &__image{
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    max-height: 100vh;
-    width: 0;
-    max-width: 100%;
-    background-image: url("http://localhost:1337/uploads/meduse_8832bca504.png");
-    background-size: cover;
-    background-position: center;
-    transition-duration: 300ms;
-  }
-
-  &:hover .projectNav__image{
-    width: 100px;
-  }
-}
-
 .projectPage{
   //min-height: calc(100vh - $headerHeight);
   min-height: 100vh;

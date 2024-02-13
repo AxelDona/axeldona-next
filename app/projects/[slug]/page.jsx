@@ -78,12 +78,6 @@ export default async function Project({ params }) {
     return (
         <main>
             <Suspense fallback={<Loading/>}>
-                <div className="projectNav projectNav--left">
-                    <div className="projectNav__image"></div>
-                </div>
-                <div className="projectNav projectNav--right">
-                    <div className="projectNav__image"></div>
-                </div>
                 <div className="projectPage" key={project.id}>
                     <div className="projectPage__mediaWrapper">
                         <div className="projectPage__media">
