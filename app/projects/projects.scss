@@ -20,10 +20,13 @@
     min-height: 100vh;
     box-sizing: border-box;
     align-content: center;
-    width: 100vw;
+    width: 100%;
     scrollbar-color: transparent transparent;
     user-select: none;
     overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: pointer;
 
     a,a:hover{
       text-decoration: none;

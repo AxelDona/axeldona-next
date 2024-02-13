@@ -30,16 +30,21 @@ export default function PortfolioGrid({ projects }) {
         itemsRef.current.scrollLeft = scrollLeft - walk;
     }
 
+    const handleWheelScroll = (e) => {
+        e.preventDefault();
+        itemsRef.current.scrollLeft += 6*(e.deltaY);
+    };
+
     return (
         <Suspense fallback={<Loading />}>
             <div className="portfolio">
                 <div className="portfolio__wrapper">
-                    <div className="portfolio__grid__wrapper">
                         <div className="portfolio__grid" ref={itemsRef}
                              onMouseDown={handleMouseDown}
                              onMouseLeave={handleMouseLeave}
                              onMouseUp={handleMouseUp}
                              onMouseMove={handleMouseMove}
+                             onWheel={handleWheelScroll}
                         >
                             {projects.map((project) => (
                                 <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
@@ -61,7 +66,6 @@ export default function PortfolioGrid({ projects }) {
                                 </Link>
                             ))}
                         </div>
-                    </div>
                 </div>
             </div>
             {projects.length === 0 && (
