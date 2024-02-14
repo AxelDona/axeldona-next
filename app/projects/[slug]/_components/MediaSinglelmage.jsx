@@ -12,7 +12,7 @@ export function MediaSingleImage({data}) {
                         height={1200}
                         alt=""
                         src={`http://localhost:1337${data[0].attributes.url}`}
-                        className="projectPage__media__link__media"
+                        className="mediaLayout__media__link__media"
                     />
                 // </a>
                 : "" }

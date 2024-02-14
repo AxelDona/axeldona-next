@@ -9,18 +9,20 @@ export default function PortfolioGrid({ projects }) {
     const itemsRef = useRef(null);
     const [isMouseDown, setIsMouseDown] = useState(false);
     const [startX, setStartX] = useState(0);
+    const [mouseMovementSinceClick, setMouseMovementSinceClick] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
 
     const handleMouseDown = (e) => {
         setIsMouseDown(true);
         setStartX(e.pageX - - itemsRef.current.offsetLeft);
         setScrollLeft(itemsRef.current.scrollLeft);
+        setMouseMovementSinceClick(e.screenX);
     }
     const handleMouseLeave = () => {
-        setIsMouseDown(false)
+        setIsMouseDown(false);
     }
     const handleMouseUp = () => {
-        setIsMouseDown(false)
+        setIsMouseDown(false);
     }
     const handleMouseMove = (e) => {
         if (!isMouseDown) return;
@@ -39,11 +41,19 @@ export default function PortfolioGrid({ projects }) {
         e.preventDefault();
     }
 
+    const handleClick = (e) => {
+        const delta = Math.abs(e.screenX - mouseMovementSinceClick);
+        if (delta > 10) {
+            e.preventDefault();
+        }
+        setMouseMovementSinceClick(0);
+    }
+
     return (
         <Suspense fallback={<Loading />}>
             <div className="portfolio">
                 <div className="portfolio__wrapper">
-                        <div className="portfolio__grid" ref={itemsRef}
+                        <div className="portfolio__grid" ref={itemsRef} id="scrollableContent"
                              onMouseDown={handleMouseDown}
                              onMouseLeave={handleMouseLeave}
                              onMouseUp={handleMouseUp}
@@ -52,7 +62,9 @@ export default function PortfolioGrid({ projects }) {
                              onDragStart={preventDragHandler}
                         >
                             {projects.map((project) => (
-                                <Link href={`/projects/${project.attributes.slug}`} key={project.id}>
+                                <Link href={`/projects/${project.attributes.slug}`}
+                                      key={project.id}
+                                      onClick={handleClick}>
                                     <div className="portfolio__grid__card" id={project.attributes.slug}>
                                         <div className="portfolio__grid__card__categories">
                                         </div>
