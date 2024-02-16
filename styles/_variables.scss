@@ -1,26 +1,34 @@
-$mainAccentColor: #0bcb86;
-$mainBackgroundColor: #FFFFFF;
-$backgroundSecondaryColor: #DDDDDD;
-
-$textColor: #505050;
-$titleColor: #111111;
-
-$white: #ffffff;
+// COLORS
 $black: #000000;
-$dark: #1E3050;
+$darkGrey: #1b1b1b;
+$mediumGrey: #505050;
+$platinum: #ebe8e5;
+$white: #FDFDFC;
+$darkBlue: #1E3050;
 
+// COLOR USES
+$mainAccentColor: #0bcb86;
+$mainBackgroundColor: $white;
+$backgroundSecondaryColor: #DDDDDD;
+$textColor: $mediumGrey;
+$titleColor: $darkGrey;
+
+// SIZES
 $headerHeight: 80px;
 $homeLogoHeight: 50px;
+$cardSize: 350px;
+$borderRadius: 4px;
 
+//FONTS
 //$mainBodyFont: 'Raleway', sans-serif;
 $mainBodyFont:  'Noto Sans', sans-serif;
 $mainTitleFont: 'Inter', sans-serif;
 
-$cardSize: 265px;
+// MIXINS
 
 @mixin titles{
   font-family: $mainTitleFont;
-  color: $black;
+  color: $titleColor;
 }
 
 @mixin container($flex: flex-start){
@@ -39,7 +47,7 @@ $cardSize: 265px;
 
 @mixin menuIconLine{
   display: block;
-  background-color: $dark;
+  background-color: $titleColor;
   width: 2em;
   height: 3px;
   position: absolute;

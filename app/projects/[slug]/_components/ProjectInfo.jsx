@@ -12,10 +12,11 @@ function formatProjectDate(dateString) {
     return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${dateObject.getFullYear()}`;
 }
 
-export default async function ProjectInfo({project}) {
+export default async function ProjectInfo({project, minimal}) {
+
     return (
         <div className="projectPage__info">
-            <Link href="/projects" className="projectPage__backButton"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;Retour</Link>
+            {minimal === true ? "" : <Link href="/projects" className="projectPage__backButton"><FontAwesomeIcon icon={faArrowLeft} />&nbsp;Retour</Link>}
             <h1 className="projectPage__info__title">{project.attributes.name}</h1>
             {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
             <span className="projectPage__info__medium">{project.attributes.medium} // {formatProjectDate(project.attributes.date)}</span>
@@ -43,14 +44,14 @@ export default async function ProjectInfo({project}) {
                     ))}
                 </div>
             </section>
-            <div className="projectPage__info__buttonsWrapper">
+            {minimal === true ? "" : <div className="projectPage__info__buttonsWrapper">
                 {project.attributes.secondaryButtons.length !== 0 ? project.attributes.secondaryButtons.map((button) => (
                     <SecondaryProjectButton key={button.id} url={button.url} text={button.text} icon={button.icon} targetBlank={true}/>
                 )) : ""}
                 {project.attributes.mainButton &&  <MainProjectButton url={project.attributes.mainButton.url} text={project.attributes.mainButton.text} targetBlank={true}/>}
-            </div>
+            </div>}
             <hr/>
-            <section className="projectPage__info__section">
+            {minimal === true ? "" : <section className="projectPage__info__section">
                 {project.attributes.categories.data.map((category, index) => (
                     <span key={category.id} className="projectPage__info__section__categories">
                                     <Link href={`/projects?categories=${category.attributes.slug}`}>
@@ -59,7 +60,7 @@ export default async function ProjectInfo({project}) {
                         {index < project.attributes.categories.data.length - 1 && ", "}
                                 </span>
                 ))}
-            </section>
+            </section>}
         </div>
     )
 }

@@ -11,7 +11,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
     padding-top: $headerHeight;
     padding-left: 20vw;
     padding-right: 20vw;
@@ -19,7 +19,6 @@
     box-sizing: border-box;
     align-content: center;
     width: 100%;
-    scrollbar-color: transparent transparent;
     user-select: none;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -44,7 +43,7 @@
       text-align: center;
       color: $white;
       background-color: $white;
-      border-radius: 6px;
+      border-radius: $borderRadius;
 
       &:after {
         content: '';
@@ -132,11 +131,6 @@
         pointer-events: none;
       }
     }
-  }
-
-  .portfolio__grid::-webkit-scrollbar{
-    height: 1px;
-    background-color: transparent;
   }
 }
 

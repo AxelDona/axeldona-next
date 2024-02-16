@@ -43,7 +43,7 @@ export default function PortfolioGrid({ projects }) {
 
     const handleClick = (e) => {
         const delta = Math.abs(e.screenX - mouseMovementSinceClick);
-        if (delta > 10) {
+        if (delta > 6) {
             e.preventDefault();
         }
         setMouseMovementSinceClick(0);
