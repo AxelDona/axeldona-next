@@ -1,5 +1,6 @@
 // COLORS
 $black: #000000;
+$darkerGrey: #0f1014;
 $darkGrey: #1b1b1b;
 $mediumGrey: #505050;
 $platinum: #ebe8e5;
@@ -7,22 +8,35 @@ $white: #FDFDFC;
 $darkBlue: #1E3050;
 
 // COLOR USES
-$mainAccentColor: #0bcb86;
+$mainAccentColor: #AD283F;
 $mainBackgroundColor: $white;
 $backgroundSecondaryColor: #DDDDDD;
 $textColor: $mediumGrey;
 $titleColor: $darkGrey;
+$navColor: $darkGrey;
 
 // SIZES
 $headerHeight: 80px;
 $homeLogoHeight: 50px;
-$cardSize: 350px;
-$borderRadius: 4px;
+$cardWidth: 38vh;
+$cardHeight: 55vh;
+$borderRadius: 3px;
 
-//FONTS
-//$mainBodyFont: 'Raleway', sans-serif;
-$mainBodyFont:  'Noto Sans', sans-serif;
-$mainTitleFont: 'Inter', sans-serif;
+// FONTS
+$noto: 'Noto Sans', sans-serif;
+$inter: 'Inter', sans-serif;
+@font-face {
+  font-family: "Gotham";
+  src: local("Gotham"),
+  url("/fonts/Gotham-Medium.otf") format("opentype");
+
+}
+$gotham: 'Gotham', sans-serif;
+
+// FONT USES
+$mainBodyFont:  $noto;
+$mainTitleFont: $inter;
+$linkFont: $gotham;
 
 // MIXINS
 
@@ -54,4 +68,12 @@ $mainTitleFont: 'Inter', sans-serif;
   left: 0;
   border-radius: 25px;
   transition: all 0.4s;
+}
+
+@mixin navLink{
+  color: $navColor;
+  font-size: 0.85rem;
+  line-height: 60px;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
 }

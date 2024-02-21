@@ -14,12 +14,12 @@
     }
 
     &__label{
+      @include navLink;
       margin-left: 1rem;
       cursor: pointer;
       padding: 0.3rem 0;
       user-select: none;
       white-space: nowrap;
-      font-weight: 300;
       pointer-events: all;
 
       &:after{
@@ -89,7 +89,7 @@
         &__logo{
           height: 1rem;
           display: inline;
-          margin-right: 0.3rem;
+          margin-right: 0.35rem;
         }
 
         &.selected{
@@ -100,6 +100,31 @@
       }
 
       &.open .portfolio__filters__accordion__tags__tag{
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .portfolio__filters{
+
+    &__menu{
+      padding-left: 15px;
+    }
+
+    &__accordion{
+
+      &__tags{
+
+        &__tag{
+          padding: 0.2rem 0.45rem;
+          margin: 0.3rem 0.3rem 0 0;
+          font-size: 0.68rem;
+
+          &__logo{
+            height: 0.8rem;
+          }
+        }
       }
     }
   }

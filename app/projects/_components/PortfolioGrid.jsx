@@ -74,8 +74,8 @@ export default function PortfolioGrid({ projects }) {
                                         </div>
                                         <Image
                                             src={`http://localhost:1337${project.attributes.card.data.attributes.url}`}
-                                            width={350}
-                                            height={350}
+                                            width={500}
+                                            height={500}
                                             alt="image"
                                             className="portfolio__grid__card__image"
                                         />

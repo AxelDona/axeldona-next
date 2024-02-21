@@ -8,24 +8,29 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 25px 0 25px;
-  z-index: 10;
   opacity: 1;
+  z-index: 50;
   pointer-events: none;
 
   &__leftWrapper {
-    width: 30vw;
+    width: 20vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    z-index: 1000;
+    height: $headerHeight;
 
-    &__homeLink{
-      width: 100px;
+    &__mainLogo{
+      font-family: $gotham;
+      color: $titleColor;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.18rem;
+      font-weight: 400;
+      min-width: 100px;
       pointer-events: all;
-      padding-top: 15px;
+      padding-top: 13px;
 
       &__image{
-        height: 50px;
       }
     }
   }
@@ -36,44 +41,73 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 15px 50px 0 50px;
+    height: $headerHeight;
+    max-width: 60vw;
   }
 
   &__rightWrapper{
-    width: 30vw;
+    width: 20vw;
+    height: $headerHeight;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+    z-index: 100;
 
     nav {
-      text-align: center;
-      height: $headerHeight;
 
       ul {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        height: 100%;
-        cursor: default;
 
         li {
-          color: $titleColor;
-          display: inline-block;
-          width: 150px;
-          height: 60px;
-          line-height: 60px;
-          font-weight: 400;
-          font-size: 16px;
-          margin-top: 15px;
-          margin-bottom: 15px;
-          vertical-align: middle;
+          padding-top: 10px;
 
-          nav ul li a {
-            font-size: 15px;
-            font-weight: 600;
-            color: $titleColor;
+          a {
+            @include navLink;
             display: inline;
             padding: 10px;
+            pointer-events: all;
+
+            &:hover{
+              color: #0bcb86;
+            }
           }
         }
       }
     }
   }
+}
+
+@media screen and (max-width: 768px){
+
+  .header{
+    height: 100vh;
+    padding: 0;
+
+    &__centerWrapper{
+      width: 100vw;
+      max-width: 100vw;
+      padding: 15px 10px 0 10px;
+    }
+
+    &__leftWrapper{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      margin-left: 10px;
+      margin-bottom: 10px
+    }
+
+    &__rightWrapper{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 50vw;
+      padding-right: 10px;
+    }
+  }
+
+}
+
+@media screen and (max-width: 480px){
 
 }

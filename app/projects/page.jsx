@@ -1,6 +1,5 @@
 import "./projects.scss";
 import {Header} from "@/components/header/Header";
-import HorizontalScrollSection from "@/components/HorizontalScrollSection";
 import PortfolioGrid from "@/app/projects/_components/PortfolioGrid";
 
 async function getProjects(params) {
@@ -39,7 +38,7 @@ export default async function Projects({ searchParams }) {
     return (
         <>
             <Header/>
-            <main>
+            <main className="under-header">
                 <PortfolioGrid projects={projects}/>
             </main>
         </>

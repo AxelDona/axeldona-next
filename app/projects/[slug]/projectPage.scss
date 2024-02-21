@@ -208,24 +208,22 @@ html body main .container--twoColumns.projectPage{
 }
 
 @media screen and (max-width: 768px) {
-  html body main .container--twoColumns.projectPage{
-    padding: 0 40px;
+
+  .mediaLayout{
+    padding: 20px 20px 0 20px;
     flex-direction: column;
-  }
 
-  .projectPage{
-
-    &__info,
+    .projectPage__info,
     &__mediaWrapper{
       width: 100%;
       max-width: 100%;
       height: auto;
     }
 
-    &__info{
+    .projectPage__info{
       order: 2;
-      padding-right: 0;
-      margin-top: 3rem;
+      padding: 0;
+      margin: 1.5rem 0 0 0;
     }
 
     &__mediaWrapper{
@@ -237,9 +235,31 @@ html body main .container--twoColumns.projectPage{
       width: auto;
       height: auto;
       padding-left: 0;
+      padding-right: 0;
 
       &__link &__link__media{
         max-height: 100vh !important;
+      }
+    }
+  }
+
+  .videoLayout{
+    justify-content: center;
+
+    .projectPage__info{
+      width: 90%;
+      margin: 0 0 1rem 0;
+      padding: 1rem;
+
+      &__techsWrapper{
+
+        &__techWrapper{
+
+          &__techTooltip{
+            transform: translateY(-50%);
+            top: -180%;
+          }
+        }
       }
     }
   }
