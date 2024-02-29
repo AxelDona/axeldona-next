@@ -8,7 +8,8 @@ $white: #FDFDFC;
 $darkBlue: #1E3050;
 
 // COLOR USES
-$mainAccentColor: #AD283F;
+$mainAccentColor: #0bbe6c;
+$mainAccentColorFaded: #bee1d5;
 $mainBackgroundColor: $white;
 $backgroundSecondaryColor: #DDDDDD;
 $textColor: $mediumGrey;
@@ -76,4 +77,16 @@ $linkFont: $gotham;
   line-height: 60px;
   letter-spacing: 0.1rem;
   font-weight: 400;
+}
+
+@mixin borderButton{
+  color: $darkGrey;
+  border: 2px solid $darkGrey;
+  border-radius: $borderRadius;
+  background: {
+    image: linear-gradient(45deg, $darkGrey 50%, transparent 50%);
+    position: 100%;
+    size: 400%;
+  }
+  transition-duration: 300ms;
 }

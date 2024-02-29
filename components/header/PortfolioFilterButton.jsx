@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import "./PortfolioFilters.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
 
 export default function PortfolioFilterButton({ type, name, slug, icon, areMultipleFiltersAllowed }) {
 
@@ -52,7 +54,7 @@ export default function PortfolioFilterButton({ type, name, slug, icon, areMulti
                 active.includes(slug) ? "selected" : ""
             } ${slug}-tag`}
         >
-            {icon ?
+            {icon && !active.includes(slug) ?
                 <img key={type.id}
                      src={`http://localhost:1337${icon}`}
                      alt={`Logo ${name}`}
@@ -60,6 +62,8 @@ export default function PortfolioFilterButton({ type, name, slug, icon, areMulti
                      className="portfolio__filters__accordion__tags__tag__logo"
                 />
                 : ""}
+            {active.includes(slug) ? <FontAwesomeIcon icon={faCheck}
+                                                      className="portfolio__filters__accordion__tags__tag__logo"/> : ""}
             {name}
         </Link>
     );

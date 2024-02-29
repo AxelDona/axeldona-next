@@ -24,6 +24,7 @@ export default async function ProjectInfo({project, minimal}) {
                 <MDXRemote
                     source={project.attributes.description}
                 />
+                {project.attributes.credits ? <MDXRemote source={project.attributes.credits}/> : ""}
             </section>
             <div className="projectPage__info__date">
 

@@ -15,7 +15,7 @@ export function MainProjectButton({text, url, icon, targetBlank}) {
 
     return (
         <>
-            <Link href={url} target={targetBlank ? "_blank" : "_self"} className="projectButton main"><FontAwesomeIcon icon={buttonIcon}/>{text ? text+" " : ""}<FontAwesomeIcon icon={faArrowRight}/></Link>
+            <Link href={url} target={targetBlank ? "_blank" : "_self"} className="projectButton primary"><FontAwesomeIcon icon={buttonIcon}/>{text ? text+" " : ""}<FontAwesomeIcon icon={faArrowRight}/></Link>
         </>
     )
 }

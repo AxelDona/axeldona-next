@@ -1,22 +1,26 @@
 .projectButton{
+  box-sizing: border-box;
   display: inline-block;
   margin: 1rem 0;
   padding: 0.9rem 1.4rem;
-  color: $black;
-  border: 2px solid $black;
-  border-radius: 6px;
-  transition-duration: 300ms;
-  transition-timing-function: ease;
   font-size: 0.9rem;
   user-select: none;
 
-  &:hover{
+  &.primary{
+    @include borderButton;
+  }
+
+  &.primary:hover{
+    background-position: 0;
     color: $white;
-    background-color: $mainAccentColor;
-    border-color: $mainAccentColor;
   }
 
   &.secondary{
-    padding: 1rem 1.4rem;
+    color: $darkGrey;
+    border-radius: $borderRadius;
+  }
+
+  &.secondary:hover{
+    background-color: $mainAccentColorFaded;
   }
 }
