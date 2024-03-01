@@ -68,7 +68,7 @@ export async function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <Link href="/about">Qui suis-je</Link>
+                            {/* <Link href="/about">Qui suis-je</Link> */}
                         </li>
                     </ul>
                 </nav>

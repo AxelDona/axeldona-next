@@ -1,6 +1,7 @@
 import {fetchAPI} from "@/db/fetch-api";
 import "./home.scss"
 import {MainProjectButton} from "@/components/buttons/MainProjectButton";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
   return (
     <>
       <main className="home">
+        <Image src='/assets/icons/axelalexdona-logo-darkGrey.svg' alt="" width={250} height={250}/>
         <MainProjectButton text="Projets" url="/projects" targetBlank={false}/>
       </main>
     </>
