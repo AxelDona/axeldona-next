@@ -128,6 +128,10 @@ hr{
   margin: 20px 0;
 }
 
+.icon{
+  display: inline-block;
+}
+
 .textWrapper{
   @include textWrapper;
 

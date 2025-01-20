@@ -83,12 +83,26 @@ html body main .container--twoColumns.projectPage{
 
 .projectPage__info{
   width: 40%;
+  height: max-content;
   padding-left: 2rem;
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
+
+  &__collapsible{
+    transition: all 500ms ease-in-out;
+  }
+
+  &.collapsible.collapsed{
+    cursor: pointer;
+  }
+
+  &.collapsible.collapsed &__collapsible{
+    height: 0;
+    overflow-y: hidden;
+  }
 
   &__title{
     width: 100%;
@@ -156,7 +170,7 @@ html body main .container--twoColumns.projectPage{
     gap: 1rem;
   }
 
-  &__section{
+  .projectPage__info__section{
     margin-top: 1rem;
     padding-bottom: 0.8rem;
 

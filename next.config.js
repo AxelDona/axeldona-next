@@ -7,6 +7,7 @@ const nextConfig = {
     images: {
         domains: ['localhost'],
     },
+    transpilePackages: ['next-mdx-remote']
 }
 
 module.exports = nextConfig
