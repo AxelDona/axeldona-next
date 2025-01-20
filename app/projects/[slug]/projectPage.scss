@@ -115,7 +115,7 @@ html body main .container--twoColumns.projectPage{
       position: relative;
 
       &__techImage{
-        max-height: 28px;
+        max-height: 23px;
         width: auto;
         user-select: none;
       }
@@ -167,12 +167,16 @@ html body main .container--twoColumns.projectPage{
       margin-bottom: 0.5rem;
     }
 
+    &__credits{
+      margin-top: 1rem;
+    }
+
     &__categories{
       font-weight: 500;
       font-size: 0.8rem;
+      color: $projectCategoriesColor;
 
       a{
-        color: $textColor;
 
         &:hover{
           color: $mainAccentColor;

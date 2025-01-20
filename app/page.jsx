@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <main className="home">
-        <Image src='/assets/icons/axelalexdona-logo-darkGrey.svg' alt="" width={250} height={250}/>
+        <Image src='/assets/icons/axelalexdona-logo-darkGrey.svg' alt="" width={175} height={175} className="home__mainLogo"/>
         <MainProjectButton text="Projets" url="/projects" targetBlank={false}/>
       </main>
     </>

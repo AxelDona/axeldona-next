@@ -57,6 +57,9 @@
     nav {
 
       ul {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
 
         li {
           padding-top: 10px;

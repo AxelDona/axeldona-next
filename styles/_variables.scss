@@ -3,6 +3,7 @@ $black: #000000;
 $darkerGrey: #0f1014;
 $darkGrey: #1b1b1b;
 $mediumGrey: #505050;
+$lightGrey: #7c7c7c;
 $platinum: #ebe8e5;
 $white: #FDFDFC;
 $darkBlue: #1E3050;
@@ -13,6 +14,7 @@ $mainAccentColorFaded: #bee1d5;
 $mainBackgroundColor: $white;
 $backgroundSecondaryColor: #DDDDDD;
 $textColor: $mediumGrey;
+$projectCategoriesColor: $lightGrey;
 $titleColor: $darkGrey;
 $navColor: $darkGrey;
 
@@ -21,7 +23,7 @@ $headerHeight: 80px;
 $homeLogoHeight: 50px;
 $cardWidth: 38vh;
 $cardHeight: 55vh;
-$borderRadius: 3px;
+$borderRadius: 4 px;
 
 // FONTS
 $noto: 'Noto Sans', sans-serif;

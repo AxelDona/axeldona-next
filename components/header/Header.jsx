@@ -58,7 +58,7 @@ export async function Header() {
         <header className="header">
             <div className="header__leftWrapper">
                 <Link href="/" className="header__leftWrapper__mainLogo">
-                    <Image src='/assets/icons/axelalexdona-logo-darkGrey.svg' alt="" width={95} height={50}/>
+                    <Image src='/assets/icons/axelalexdona-logo-darkGrey.svg' alt="" width={75} height={35}/>
                 </Link>
             </div>
             <div className="header__centerWrapper">
@@ -68,7 +68,10 @@ export async function Header() {
                 <nav>
                     <ul>
                         <li>
-                            {/* <Link href="/about">Qui suis-je</Link> */}
+                            <Link href="/about">CV</Link>
+                        </li>
+                        <li>
+                            <Link href="/about">Qui suis-je</Link>
                         </li>
                     </ul>
                 </nav>

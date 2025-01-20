@@ -20,15 +20,17 @@ export default async function ProjectInfo({project, minimal}) {
             <h1 className="projectPage__info__title">{project.attributes.name}</h1>
             {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
             <span className="projectPage__info__medium">{project.attributes.medium} // {formatProjectDate(project.attributes.date)}</span>
+            <div>
+
+            </div>
             <section className="projectPage__info__section">
                 <MDXRemote
                     source={project.attributes.description}
                 />
-                {project.attributes.credits ? <MDXRemote source={project.attributes.credits}/> : ""}
+                <div className="projectPage__info__section__credits">
+                    {project.attributes.credits ? <MDXRemote source={project.attributes.credits}/> : ""}
+                </div>
             </section>
-            <div className="projectPage__info__date">
-
-            </div>
             <section className="projectPage__info__section">
                 <div className="projectPage__info__techsWrapper">
                     {project.techs.map((tech) => (
