@@ -58,25 +58,38 @@ html body main .container--twoColumns.projectPage{
   .projectPage__backButton{
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 20;
-    padding-top: 1rem;
-    padding-right: 2rem;
+    padding: 1rem 1.5rem;
+
+    & > div{
+      padding: 0.25rem 0.5rem;
+      border-radius: $borderRadius;
+      background-color: $white;
+      color: $darkerGrey;
+      font-size: 1.5rem;
+
+      &:hover{
+        background-color: $darkerGrey;
+        color: $backgroundSecondaryColor;
+      }
+    }
   }
 
   .projectPage__info{
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.92);
     border-radius: $borderRadius;
     margin-right: 5vw;
     margin-bottom: 5vw;
     padding-top: 2rem;
     padding-right: 2rem;
-    padding-bottom: 1.8rem;
+    padding-bottom: 1.4rem;
     border: 1px solid $white;
-    transition-duration: 300ms;
+    overflow: hidden;
+    transition: background-color 200ms ease-in-out;
 
-    &:hover{
-      background-color: rgba(255, 255, 255, 0.96);
+    &.expanded, &:hover{
+      background-color: rgba(255, 255, 255, 0.98);
     }
   }
 }
@@ -92,16 +105,43 @@ html body main .container--twoColumns.projectPage{
   z-index: 2;
 
   &__collapsible{
-    transition: all 500ms ease-in-out;
   }
 
   &.collapsible.collapsed{
     cursor: pointer;
   }
 
+  &.collapsible.expanded{
+    cursor: default;
+  }
+
   &.collapsible.collapsed &__collapsible{
     height: 0;
-    overflow-y: hidden;
+    overflow: hidden;
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    transition: all 200ms ease-in-out;
+    font-size: 1.5rem;
+  }
+
+  &.collapsible.collapsed &__closeButton{
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.collapsible.expanded &__header{
+    cursor: pointer;
+
+    &:hover{
+    }
   }
 
   &__title{

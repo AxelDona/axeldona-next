@@ -68,7 +68,7 @@ export async function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <Link href="/about">CV</Link>
+                            <Link href="https://axeldona.com/dona-axel_cv.pdf" target="_blank">CV</Link>
                         </li>
                         <li>
                             <Link href="/about">Qui suis-je</Link>
