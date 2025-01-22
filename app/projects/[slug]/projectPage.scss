@@ -5,11 +5,31 @@ html body main .container--twoColumns.projectPage{
 
 .projectPage{
   min-height: 100vh;
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
 
   &__backButton{
-    padding: 0 15px 1rem 0;
+    font-size: 1.1rem;
+    padding-right: 0.8rem;
+    margin-bottom: 2.5rem;
+    border-radius: $borderRadius;
     line-height: $homeLogoHeight;
+    width: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: padding-left 100ms linear;
+
+    &:hover{
+      padding-left: 0.8rem;
+      background-color: $backgroundSecondaryColor;
+    }
+
+    .icon{
+      line-height: 2rem;
+    }
   }
 }
 
@@ -101,18 +121,67 @@ html body main .container--twoColumns.projectPage{
   margin-right: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   z-index: 2;
+  overflow: auto;
 
-  &__collapsible{
+  &.fixed{
+    min-height: 100vh;
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  &.fixed &__icon, &.fixed &__header__icon{
+    display: none;
   }
 
   &.collapsible.collapsed{
     cursor: pointer;
+
+    &:hover {
+      .projectPage__info__icon.openIcon{
+        background-color: $darkGrey;
+        color: $mainBackgroundColor;
+      }
+    }
+  }
+
+  &.collapsible.collapsed &__header__icon.closeIcon{
+    opacity: 0;
+  }
+
+  &.collapsible.collapsed &__icon.openIcon{
+    opacity: 1;
   }
 
   &.collapsible.expanded{
     cursor: default;
+
+    .projectPage__info__header{
+
+      &:hover{
+          background-color: $backgroundSecondaryColor;
+
+        .closeIcon{
+          background-color: $darkGrey;
+          color: $mainBackgroundColor;
+        }
+      }
+
+      &:hover &__icon{
+      }
+    }
+  }
+
+  &.collapsible.expanded &__header__icon.closeIcon{
+    opacity: 1;
+  }
+
+  &.collapsible.expanded &__icon.openIcon{
+    opacity: 0;
   }
 
   &.collapsible.collapsed &__collapsible{
@@ -120,125 +189,131 @@ html body main .container--twoColumns.projectPage{
     overflow: hidden;
   }
 
-  &__closeButton {
+  &__header{
+    flex-shrink: 0;
+
+    &__title{
+      width: 100%;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    &__subheading{
+      display: block;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  &__collapsibleSection{
+
+    &__content{
+      margin-top: 1rem;
+    }
+
+    &__footer{
+      margin-top: 3rem;
+
+      &__techsWrapper{
+        display: flex;
+        justify-content: left;
+        gap: 10px;
+
+        &__techWrapper{
+          position: relative;
+
+          &__techImage{
+            max-height: 23px;
+            width: auto;
+            user-select: none;
+          }
+
+          &__techTooltip{
+            background-color: #3f3f3f;
+            border: 1px solid #343434;
+            color: $backgroundSecondaryColor;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            padding: 0.2rem 0.5rem;
+            margin: 0.4rem 0.4rem 0 0;
+            font-size: 0.75rem;
+            font-weight: 300;
+            white-space: nowrap;
+            visibility: hidden;
+            user-select: none;
+            user-focus: none;
+            transition-duration: 200ms;
+            transform: translateY(50%);
+            opacity: 0;
+            transition-timing-function: ease;
+          }
+
+          &:hover .projectPage__info__techsWrapper__techWrapper__techTooltip{
+            opacity: 0.9;
+            visibility: visible;
+            transform: translateY(0);
+          }
+        }
+
+      }
+
+      &__buttonsWrapper{
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+
+      &__categories{
+        margin-top: 1rem;
+        padding-bottom: 0.8rem;
+
+        &__list{
+          font-weight: 500;
+          font-size: 0.8rem;
+          color: $projectCategoriesColor;
+
+          a{
+
+            &:hover{
+              color: $mainAccentColor;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  &__icon, &__header__icon{
     position: absolute;
     top: 2rem;
     right: 2rem;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 1rem;
     transition: all 200ms ease-in-out;
-    font-size: 1.5rem;
-  }
-
-  &.collapsible.collapsed &__closeButton{
-    opacity: 0;
+    font-size: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: $darkGrey;
     pointer-events: none;
+    border-radius: $borderRadius;
+
+    &.closeIcon{
+
+    }
+
+    &.openIcon{
+
+    }
   }
 
   &.collapsible.expanded &__header{
     cursor: pointer;
-
-    &:hover{
-    }
   }
 
-  &__title{
-    width: 100%;
-    line-height: 1;
-    margin-bottom: 0.2rem;
-  }
 
-  &__medium{
-    display: block;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-
-  &__date{
-    font-weight: 600;
-  }
-
-  &__techsWrapper{
-    display: flex;
-    justify-content: left;
-    gap: 10px;
-
-    &__techWrapper{
-      position: relative;
-
-      &__techImage{
-        max-height: 23px;
-        width: auto;
-        user-select: none;
-      }
-
-      &__techTooltip{
-        background-color: #3f3f3f;
-        border: 1px solid #343434;
-        color: #fff;
-        border-radius: 6px;
-        position: absolute;
-        z-index: 1;
-        padding: 0.25rem 0.5rem;
-        margin: 0.4rem 0.4rem 0 0;
-        font-size: 0.75rem;
-        font-weight: 300;
-        white-space: nowrap;
-        visibility: hidden;
-        user-select: none;
-        user-focus: none;
-        transition-duration: 200ms;
-        transform: translateY(50%);
-        opacity: 0;
-        transition-timing-function: ease;
-      }
-
-      &:hover .projectPage__info__techsWrapper__techWrapper__techTooltip{
-        opacity: 0.9;
-        visibility: visible;
-        transform: translateY(0);
-      }
-    }
-
-  }
-
-  &__buttonsWrapper{
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-
-  .projectPage__info__section{
-    margin-top: 1rem;
-    padding-bottom: 0.8rem;
-
-    &__title{
-      font-size: 1rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    &__credits{
-      margin-top: 1rem;
-    }
-
-    &__categories{
-      font-weight: 500;
-      font-size: 0.8rem;
-      color: $projectCategoriesColor;
-
-      a{
-
-        &:hover{
-          color: $mainAccentColor;
-        }
-      }
-
-    }
-  }
 
   .projectButton{
     align-self: flex-end;

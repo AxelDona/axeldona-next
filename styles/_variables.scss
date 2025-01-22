@@ -5,6 +5,7 @@ $darkGrey: #1b1b1b;
 $mediumGrey: #505050;
 $lightGrey: #7c7c7c;
 $platinum: #ebe8e5;
+$whiteShadow: #eeeeee;
 $white: #FDFDFC;
 $darkBlue: #1E3050;
 
@@ -12,7 +13,7 @@ $darkBlue: #1E3050;
 $mainAccentColor: #0bbe6c;
 $mainAccentColorFaded: #bee1d5;
 $mainBackgroundColor: $white;
-$backgroundSecondaryColor: #DDDDDD;
+$backgroundSecondaryColor: $whiteShadow;
 $textColor: $mediumGrey;
 $projectCategoriesColor: $lightGrey;
 $titleColor: $darkGrey;
